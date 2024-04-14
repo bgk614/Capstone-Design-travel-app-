@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'NanumBarunGothic';
+  src: url('./nanum-barun-gothic/NanumBarunGothic.ttf') format('truetype'),
+       url('./nanum-barun-gothic/NanumBarunGothic.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NanumBarunGothicBold';
+  src: url('./nanum-barun-gothic/NanumBarunGothicBold.ttf') format('truetype'),
+       url('./nanum-barun-gothic/NanumBarunGothicBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NanumBarunGothicLight';
+  src: url('./nanum-barun-gothic/NanumBarunGothicLight.ttf') format('truetype'),
+       url('./nanum-barun-gothic/NanumBarunGothicLight.otf') format('opentype');
+  font-weight: 300; /* Light */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NanumBarunGothicUltraLight';
+  src: url('./nanum-barun-gothic/NanumBarunGothicUltraLight.ttf') format('truetype'),
+       url('./nanum-barun-gothic/NanumBarunGothicUltraLight.otf') format('opentype');
+  font-weight: 200; /* UltraLight */
+  font-style: normal;
+
+/* 
+  src: 사용할 폰트의 위치 및 형식 
+     Safari, Android, iOS => ttf
+     Modern Browsers => woff
+     IE6-IE8 => eot
+  */
+ 
+  /* 사용할 폰트의 기본 스타일 */
+  /* font-weight: 400;
+  font-style: normal; */
+}

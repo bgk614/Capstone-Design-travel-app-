@@ -1,0 +1,16 @@
+.MakeplanButton {
+    font-size: 20px;
+    text-decoration-line: none;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    /* padding: 5px 18px 5px 18px; */
+    border-radius: 2px;
+    letter-spacing: 2px;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+    font-family: 'NanumBarunGothicBold';
+}

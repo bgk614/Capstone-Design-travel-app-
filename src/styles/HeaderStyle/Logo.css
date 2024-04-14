@@ -1,0 +1,14 @@
+.Logo {
+    font-size: 32px;
+    color: black;
+    font-family: 'NanumBarunGothic';
+    width: 400px;
+}
+
+.Logo .travel, .Logo .maker {
+    letter-spacing: 4px; 
+    display: inline-block;
+}
+.Logo .maker {
+    letter-spacing: 7px;
+}

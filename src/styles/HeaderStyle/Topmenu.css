@@ -1,0 +1,14 @@
+.topmenu {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-left: 100px;
+}
+
+.menu-link {
+    letter-spacing: 1px;
+    font-size: 11px;
+    color: black;
+    text-decoration-line: none;
+    font-family: 'NanumBarunGothicLight';
+}

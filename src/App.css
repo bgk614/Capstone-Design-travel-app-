@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+}
+.App {
+  background: rgb(255, 255, 255);
+}
+  
+body {
+  font-family: 'NanumBarunGothic', sans-serif;
+}
+
+.bold-text {
+  font-family: 'NanumBarunGothicBold', sans-serif;
+}
+
+.light-text {
+  font-family: 'NanumBarunGothicLight', sans-serif;
+}
+
+.ultra-light-text {
+  font-family: 'NanumBarunGothicUltraLight', sans-serif;
+}
+
+.center-page {
+  height: 80vh;
+}
