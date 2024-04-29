@@ -5,10 +5,9 @@
 }
 
 .nav-link {
-    letter-spacing: 1px;
+    letter-spacing: -1px;
     text-decoration-line: none;
-    font-weight: 80px;
     color: black;
-    font-size: 35px;
+    font-size: 34px;
     font-family: 'NanumBarunGothicBold';
 }
