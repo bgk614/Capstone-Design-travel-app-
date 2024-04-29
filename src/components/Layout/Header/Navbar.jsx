@@ -7,16 +7,20 @@ export default function Navbar() {
         <div>
             <div className="navbar">
                     <Link className="nav-link" to='/best'>
-                        BEST
-                    </Link>
-                    <Link className="nav-link" to='/board'>
-                        BOARD
+                        베스트
                     </Link>
                     <Link className="nav-link" to='/destinations'>
-                        DESTINATIONS
+                        여행지
                     </Link>
+                    <Link className="nav-link" to='/plan'>
+                        일정
+                    </Link>
+                    <Link className="nav-link" to='/board'>
+                        게시판
+                    </Link>
+                    
                     <Link className="nav-link" to='/faq'>
-                        FAQ
+                        문의
                     </Link>
             </div> 
         </div>
