@@ -1,0 +1,30 @@
+.best-head-text {
+    display: flex;
+    justify-content: left;
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-family: 'NanumBarunGothicBold';
+    background-color: rgb(255, 255, 255);
+}
+
+.allpage {
+    display: flex;
+    min-width: 900px;
+    padding: 40px 60px 60px 60px;
+}
+
+.best-page {
+    margin-left: 50px;
+}
+
+.best-d-list {
+    display: flex;
+    
+}
+.best-d-1 {
+    width: 220px;
+    height: 220px;
+    border: 1px solid rgb(203, 203, 203);
+    margin: 20px 20px 0px 0px;
+
+}

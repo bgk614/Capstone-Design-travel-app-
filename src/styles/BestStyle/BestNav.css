@@ -1,0 +1,22 @@
+.nav {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.best-text {
+    width: 150px;
+    font-family: 'NanumBarunGothicBold';
+    font-size: 20px;
+    border: none;
+    padding-bottom: 10px; 
+    border-bottom: 3px solid black;
+}
+
+.bestnav-link {
+    text-decoration: none;
+    color: rgb(90, 90, 90);
+    font-family: 'NanumBarunGothicLight';
+    font-size: 14px;
+    margin-top: 20px;
+}

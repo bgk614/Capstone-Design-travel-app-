@@ -1,0 +1,32 @@
+.city-nav-vertical {
+  font-family: 'NanumBarunGothicLight';
+  color: rgb(122, 122, 122);
+  display: flex; 
+  flex-direction: column;
+  width: 150px;
+  background-color: rgb(255, 255, 255);
+}
+.city-vertical {
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+  margin-left: 0px;
+  text-align: left;
+  margin-top: 30px;
+  font-size: 14px;
+  background-color: rgb(255, 255, 255);
+
+}
+
+.city-nav-vertical ul {
+  padding-left: 0; /* 기본 ul 패딩을 제거합니다. */
+  margin-top: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+.bestdestinations-list {
+  font-family: 'NanumBarunGothicLight';
+  margin-top: 30px;
+  background-color: rgb(255, 255, 255);
+  
+}
+
