@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/PageStyle/Faqpage.css"
+import "../../styles/PageStyle/FAQPage.css"
 export default function FAQPage() {
     return (
         <div>
