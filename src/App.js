@@ -2,29 +2,27 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import MainPage from './pages/NormalPage/MainPage';
+import MainPage from './pages/BasePages/MainPage';
 import Header from './components/Layout/Header/Header';
 import Footer from './components/Layout/Footer/Footer';
 
 import MyPage from './pages/MyPages/MyPage';
-import MylikePage from './pages/MyPages/MylikePage';
-import MyplanPage from './pages/MyPages/MyplanPage';
+import MylikePage from './pages/MyPages/MyLikePage';
+import MyplanPage from './pages/MyPages/MyPlanPage';
 import LoginPage from './pages/AuthPages/LoginPage';
 
 import BestDestinationsPage from './pages/BestPages/BestDestinationsPage';
 import BestPlanPage from './pages/BestPages/BestPlanPage';
 import BestPostPage from './pages/BestPages/BestPostPage';
 
-import DestinationsPage from './pages/NormalPage/DestinationsPage';
-import BoardPage from './pages/NormalPage/BoardPage';
-import PlanPage from './pages/NormalPage/PlanPage';
-import FAQPage from './pages/NormalPage/FAQPage';
+import DestinationsPage from './pages/BasePages/DestinationsPage';
+import BoardPage from './pages/BasePages/BoardPage';
+import PlanPage from './pages/BasePages/PlanPage';
+import FAQPage from './pages/BasePages/FAQPage';
 
-import MakeplanPage from './pages/MakeplanPage';
-
+import MakeplanPage from './pages/MakePlanPages/MakePlanPage';
 import SignupPage from './pages/AuthPages/SignupPage';
-
-import TestPlanPage from './pages/NormalPage/TestPlanPage';
+import TestPlanPage from './pages/BasePages/TestPlanPage';
 
 function App() {
 
