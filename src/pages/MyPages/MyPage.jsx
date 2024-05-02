@@ -1,5 +1,5 @@
 import React from "react";
-import MypageNav from "../../components/MyPageNav";
+import MypageNav from "../../components/MyPageNavbar";
 
 export default function MyPage() {
     return (

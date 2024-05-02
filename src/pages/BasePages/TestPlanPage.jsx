@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/PageStyle/Testplanpage.css"
+import "../../styles/PageStyle/TestPlanPage.css"
 import MyScheduleApp from "../../components/MyScheduleApp";
 
 export default function TestPlanPage() {

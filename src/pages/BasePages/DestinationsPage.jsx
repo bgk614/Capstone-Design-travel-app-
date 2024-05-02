@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CityNavVertical from '../../components/CityNav/CityNavVertical';
 import DestinationCategoryBar from "../../components/CityNav/DestinationCategoryBar";
-import "../../styles/PageStyle/Destinationspage.css";
+import "../../styles/PageStyle/DestinationsPage.css";
 
 export default function DestinationsPage() {
     return (
