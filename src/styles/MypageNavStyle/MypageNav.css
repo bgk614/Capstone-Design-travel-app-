@@ -1,0 +1,10 @@
+.MypageNav {
+    width: 300px;
+    display: flex;
+    background-color: rgb(255, 243, 243);
+    padding: 40px 60px 60px 60px;
+}
+
+.mypage-nav-link {
+    margin: 3px;
+}
