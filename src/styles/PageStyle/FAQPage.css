@@ -1,0 +1,17 @@
+.info {
+    min-width: 900px;
+    border: 1px solid;
+    padding: 10px;
+    margin: 60px;
+}
+.faqbox {
+    min-width: 900px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 60px;
+}
+.faqlist {
+    border: 1px solid;
+    padding: 10px;
+    margin: 5px;
+}
