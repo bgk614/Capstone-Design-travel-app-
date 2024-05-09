@@ -3,8 +3,8 @@ import React from "react"
 import '../../../styles/HeaderStyle/Header.css'
 
 import Logo from "./Logo"
-import Topmenu from "./Topmenu"
-import Navbar from "./Navbar"
+import Topmenu from "./TopMenu"
+import Navbar from "./NavBar"
 import MakeplanButton from "./MakePlanButton"
 
 function Header() {

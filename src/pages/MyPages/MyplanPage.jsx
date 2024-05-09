@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/PageStyle/MyPageStyle/Myplanpage.css"
+import "../../styles/PageStyle/MyPageStyle/MyPlanPage.css"
 
 export default function MyplanPage() {
     return (
