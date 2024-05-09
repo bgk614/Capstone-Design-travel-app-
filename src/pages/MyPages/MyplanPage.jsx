@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/PageStyle/MyPageStyle/MyPlanPage.css"
 
-export default function MyplanPage() {
+export default function MyPlanPage() {
     return (
         <div>
             <h1> MyplanPage </h1>

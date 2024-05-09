@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom";
 import '../styles/MyPageNavStyle/MyPageNav.css';
 
-export default function MypageNav() {
+export default function MyPageNavBar() {
     return (
         <div>
             <div className="MypageNav">
