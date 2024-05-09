@@ -4,7 +4,7 @@ import '../../../styles/HeaderStyle/TopNav.css'
 
 
 
-export default function Topmenu() {
+export default function TopMenu() {
     return (
             <div className="topmenu">
                 <Link className="menu-link" to='/mypage'>

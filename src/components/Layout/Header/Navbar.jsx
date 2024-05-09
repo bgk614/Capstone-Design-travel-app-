@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom";
 import '../../../styles/HeaderStyle/NavBar.css';
 
-export default function Navbar() {
+export default function NavBar() {
     return (
         <div>
             <div className="navbar">

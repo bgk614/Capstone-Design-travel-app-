@@ -7,8 +7,8 @@ import Header from './components/Layout/Header/Header';
 import Footer from './components/Layout/Footer/Footer';
 
 import MyPage from './pages/MyPages/MyPage';
-import MylikePage from './pages/MyPages/MyLikePage';
-import MyplanPage from './pages/MyPages/MyPlanPage';
+import MyLikePage from './pages/MyPages/MyLikePage';
+import MyPlanPage from './pages/MyPages/MyPlanPage';
 import LoginPage from './pages/AuthPages/LoginPage';
 
 import BestDestinationsPage from './pages/BestPages/BestDestinationsPage';
@@ -20,7 +20,7 @@ import BoardPage from './pages/BasePages/BoardPage';
 import PlanPage from './pages/BasePages/PlanPage';
 import FAQPage from './pages/BasePages/FAQPage';
 
-import MakeplanPage from './pages/MakePlanPages/MakePlansPage';
+import MakePlanPage from './pages/MakePlanPages/MakePlansPage';
 import SignupPage from './pages/AuthPages/SignupPage';
 import TestPlanPage from './pages/BasePages/TestPlanPage';
 
@@ -35,8 +35,8 @@ function App() {
           <Route path="/" element={<MainPage />} />
 
           <Route path="/mypage" element={<MyPage />} />
-          <Route path="/mylike" element={<MylikePage />} />
-          <Route path="/myplan" element={<MyplanPage />} />
+          <Route path="/mylike" element={<MyLikePage />} />
+          <Route path="/myplan" element={<MyPlanPage />} />
           <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} /> 
 
@@ -46,7 +46,7 @@ function App() {
           <Route path="/plan" element={<PlanPage />} />
           <Route path="/faq" element={<FAQPage />} />
 
-          <Route path="/makeplan" element={<MakeplanPage />} />
+          <Route path="/makeplan" element={<MakePlanPage />} />
 
           <Route path="/bestdestinations" element={<BestDestinationsPage />} />
           <Route path="/bestplan" element={<BestPlanPage />} />

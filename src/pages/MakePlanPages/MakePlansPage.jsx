@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/PageStyle/MakePlanPage.css"
 
-export default function MakeplanPage() {
+export default function MakePlanPage() {
     return (
         <div className="makeplanpage">
             <h1> MakeplanPage </h1>
