@@ -1,12 +1,12 @@
 import React from "react";
-import MypageNav from "../../components/MyPageNavBar";
+import MyPageNav from "../../components/MyPageNav-Bar";
 
 export default function MyPage() {
     return (
         <div>
             <div>
                 <h1> MyPage </h1>
-                <MypageNav />
+                <MyPageNav />
                 {/* <div>책갈피</div>
                 <div>나의 여행정보</div>
                 <div>일정 조회</div>

@@ -20,7 +20,7 @@ import BoardPage from './pages/BasePages/BoardPage';
 import PlanPage from './pages/BasePages/PlanPage';
 import FAQPage from './pages/BasePages/FAQPage';
 
-import MakePlanPage from './pages/MakePlanPages/MakePlansPage';
+import MakePlanPage from './pages/MakePlanPages/MakePlanPage';
 import SignupPage from './pages/AuthPages/SignupPage';
 import TestPlanPage from './pages/BasePages/TestPlanPage';
 
