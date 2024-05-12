@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/PageStyle/MyPageStyle/MyPlanPage.css"
+import MyPageNav from "../../components/MyPageNavBar";
 
 export default function MyPlanPage() {
     return (
         <div>
             <h1> MyplanPage </h1>
+            <MyPageNav />
             <div className="plans">
                 <div className="lp">
                     지난일정

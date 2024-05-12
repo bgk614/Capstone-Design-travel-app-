@@ -8,7 +8,10 @@ import Footer from './components/Layout/Footer/Footer';
 
 import MyPage from './pages/MyPages/MyPage';
 import MyLikePage from './pages/MyPages/MyLikePage';
+import MyAccountSettingsPage from './pages/MyPages/MyAccountSettingsPage';
 import MyPlanPage from './pages/MyPages/MyPlanPage';
+import MyTravelPreferencePage from './pages/MyPages/MyTravelPreferencePage';
+import MyPostsPage from './pages/MyPages/MyPostsPage';
 import LoginPage from './pages/AuthPages/LoginPage';
 
 import BestDestinationsPage from './pages/BestPages/BestDestinationsPage';
@@ -33,13 +36,19 @@ function App() {
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-
+          
+          {/* 우측상단 네비바 */}
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/mylike" element={<MyLikePage />} />
           <Route path="/myplan" element={<MyPlanPage />} />
-          <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} /> 
+          <Route path="/myaccount" element={<MyAccountSettingsPage />} />
+          <Route path="/mypost" element={<MyPostsPage />} />
+          <Route path="/mytravelpreference" element={<MyTravelPreferencePage />} />
 
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} /> 
+          
+          {/* 기본페이지 네비바 */}
           <Route path="/best" element={<BestDestinationsPage />} />
           <Route path="/board" element={<BoardPage />} />
           <Route path="/destinations" element={<DestinationsPage />} />
@@ -48,9 +57,12 @@ function App() {
 
           <Route path="/makeplan" element={<MakePlanPage />} />
 
+          {/* 베스트 페이지 */}
           <Route path="/bestdestinations" element={<BestDestinationsPage />} />
           <Route path="/bestplan" element={<BestPlanPage />} />
           <Route path="/bestpost" element={<BestPostPage />} />
+          <Route path="/testplan" element={<TestPlanPage />} />
+
           <Route path="/testplan" element={<TestPlanPage />} />
 
         </Routes>
