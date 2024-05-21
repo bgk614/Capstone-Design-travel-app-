@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-// import "../../styles/BoardStyle/BoardDetail.css";
+import "../../styles/BoardStyle/BoardDetail.css";
 
 const BoardDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // URL에서 게시글 ID 가져오기
   const [board, setBoard] = useState(null);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/board/${id}`)
       .then(response => {
-        setBoard(response.data);
+        setBoard(response.data); // 응답 데이터를 상태에 저장
       })
       .catch(error => {
         console.error('Error fetching board:', error);
       });
   }, [id]);
 
-  if (!board) return <div>Loading...</div>;
-
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
+  if (!board) return <div>Loading...</div>;
 
   return (
     <div className="board-detail">

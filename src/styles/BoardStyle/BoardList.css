@@ -40,3 +40,10 @@
   font-size: 0.9em;
   color: #999;
 }
+
+.board-delete-button {
+  background-color: #333;
+  height: 30px;
+  width: 100px;
+  margin-top: 10px;
+}

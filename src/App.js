@@ -84,7 +84,7 @@ function App() {
 
           {/* 게시판 페이지 */}
           <Route path="/write" element={<BoardWritePage />} />
-          <Route path="/detail" element={<BoardDetailPage />} />
+          <Route path="/detail/:id" element={<BoardDetailPage />} />
 
         </Routes>
         </div>

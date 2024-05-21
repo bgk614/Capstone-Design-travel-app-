@@ -1,7 +1,7 @@
-.board {
+.board-page {
     min-width: 900px;
     margin: 60px;
-    display: flex;
+    /* display: flex; */
 }
 .w {
     border: 1px solid black;
@@ -23,4 +23,12 @@
 .board-t {
     border: 1px solid gainsboro;
     margin: 10px;
+}
+
+.write-button-link {
+    background-color: aqua;
+    font-size: 20px;
+    margin: 20px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 2px;
 }

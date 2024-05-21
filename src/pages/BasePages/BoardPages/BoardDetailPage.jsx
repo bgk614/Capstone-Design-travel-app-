@@ -6,11 +6,10 @@ import { Link } from "react-router-dom";
 export default function BoardDetailPage() {
     return (
         <div className="board-detail-page">
-                글 상세보기
-                <BoardDetail/>
                 <Link className="exit-link" to='/board'>
-                뒤로가기
+                목록으로 돌아가기
                 </Link>
+                <BoardDetail/>
         </div>
     );
 }
