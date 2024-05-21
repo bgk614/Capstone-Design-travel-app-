@@ -17,3 +17,10 @@
     margin: 10px;
 }
 
+.my-plan-page {
+    /* width: 100%; */
+    min-width: 900px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+}

@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom";
-import '../styles/MyPageNavStyle/MyPageNav.css';
+import '../../styles/MyPageNavStyle/MyPageNav.css';
 
 export default function MyPageNavBar() {
     return (

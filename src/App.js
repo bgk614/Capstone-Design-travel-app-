@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
+import {useState, useEffect} from 'react';
 import "./App.css";
 
 import MainPage from './pages/BasePages/MainPage';
@@ -19,7 +20,7 @@ import BestPlanPage from './pages/BestPages/BestPlanPage';
 import BestPostPage from './pages/BestPages/BestPostPage';
 
 import DestinationsPage from './pages/BasePages/DestinationsPage';
-import BoardPage from './pages/BasePages/BoardPage';
+import BoardPage from './pages/BasePages/BoardPages/BoardPage';
 import PlanPage from './pages/BasePages/PlanPage';
 import FAQPage from './pages/BasePages/FAQPage';
 
@@ -27,13 +28,29 @@ import MakePlanPage from './pages/MakePlanPages/MakePlanPage';
 import SignupPage from './pages/AuthPages/SignupPage';
 import TestPlanPage from './pages/BasePages/TestPlanPage';
 
+import BoardWritePage from './pages/BasePages/BoardPages/BoardWritePage';
+import BoardDetailPage from './pages/BasePages/BoardPages/BoardDetailPage';
+
 function App() {
+  const [message, setMessage]=useState([]);
+  useEffect(()=>{
+    fetch("/api/demo-web")
+        .then((response)=>{
+          return response.json();
+        })
+        .then((data)=>{
+            setMessage(data);
+        });
+  },[]);
 
     return (
+
       <div className="App">
         <Header />
         <div className='center-page'>
-
+        <div>
+        {message}
+        </div>
         <Routes>
           <Route path="/" element={<MainPage />} />
           
@@ -65,12 +82,16 @@ function App() {
 
           <Route path="/testplan" element={<TestPlanPage />} />
 
+          {/* 게시판 페이지 */}
+          <Route path="/write" element={<BoardWritePage />} />
+          <Route path="/detail" element={<BoardDetailPage />} />
+
         </Routes>
         </div>
         
         <Footer />
         </div>
     );
-}
 
+}
 export default App;

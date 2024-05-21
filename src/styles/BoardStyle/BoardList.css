@@ -1,0 +1,42 @@
+.board-list {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.board-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.board-item h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.board-item p {
+  margin: 5px 0;
+  color: #666;
+  white-space: nowrap; /* 한 줄로 표시 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 말줄임표(...) 추가 */
+}
+
+.board-item p:last-child {
+  font-size: 0.9em;
+  color: #999;
+}
+
+.board-item:hover {
+  background-color: #f1f1f1;
+}
+
+.date {
+  font-size: 0.9em;
+  color: #999;
+}

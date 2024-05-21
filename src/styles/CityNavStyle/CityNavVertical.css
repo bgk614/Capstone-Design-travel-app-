@@ -18,7 +18,7 @@
 }
 
 .city-nav-vertical ul {
-  padding-left: 0; /* 기본 ul 패딩을 제거합니다. */
+  padding-left: 0; 
   margin-top: 20px;
   background-color: rgb(255, 255, 255);
 }

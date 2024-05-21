@@ -1,0 +1,34 @@
+/* MyFavoritesPage.css 위치: src/styles/PageStyle/MyPageStyle/MyFavoritesPage.css */
+
+.my-favorites {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.my-favorites h1 {
+    color: #333;
+}
+
+.my-favorites section {
+    margin-top: 20px;
+}
+
+.my-favorites h2 {
+    color: darkblue;
+}
+
+.my-favorites ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.my-favorites li {
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+}
+
+.my-favorites p {
+    color: #666;
+}
