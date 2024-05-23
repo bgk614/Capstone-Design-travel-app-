@@ -1,0 +1,7 @@
+.my-travel-pre {
+    /* width: 100%; */
+    min-width: 900px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+}

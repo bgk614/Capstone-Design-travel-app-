@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/PageStyle/TestPlanPage.css"
-import MyScheduleApp from "../../components/MyScheduleApp";
+import MyScheduleApp from "../../components/MyPageConponents/MyScheduleApp";
 
 export default function TestPlanPage() {
     return (

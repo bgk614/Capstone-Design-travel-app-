@@ -1,12 +1,16 @@
 import React from "react";
-
+import MyPageNav from "../../components/MyPageConponents/MyPageNavBar";
+import MyLike from "../../components/MyPageConponents/MyLike";
+import "../../styles/PageStyle/MyPageStyle/MyLikePage.css"
 export default function MyLikePage() {
     return (
         <div>
-            <h1> MyLike </h1>
-            <div>별표 여행지</div>
-            <div>별표 플랜</div>
-            <div>별표 게시글</div>
+
+        <div className="my-like-page">
+            
+            <MyPageNav />
+            <MyLike />
+            </div>
         </div>
     )
 }

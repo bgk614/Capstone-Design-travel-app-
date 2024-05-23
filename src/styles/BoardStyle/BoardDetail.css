@@ -1,0 +1,24 @@
+.board-detail {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .board-detail h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+  }
+  
+  .board-detail p {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #666;
+  }
+  
+  .board-detail .date {
+    font-size: 0.9em;
+    color: #999;
+  }

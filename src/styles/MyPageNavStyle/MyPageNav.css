@@ -1,10 +1,15 @@
-.MypageNav {
-    width: 300px;
-    display: flex;
-    background-color: rgb(255, 243, 243);
-    padding: 40px 60px 60px 60px;
+.my-page-nav {
+    
+    width: 150px;
+    display: flex; 
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
 }
 
 .mypage-nav-link {
-    margin: 3px;
+    text-decoration-line: none;
+    margin: 15px 0px 15px 0px;
+    color: black;
+    letter-spacing: 1px;
+    background-color: aqua;
 }

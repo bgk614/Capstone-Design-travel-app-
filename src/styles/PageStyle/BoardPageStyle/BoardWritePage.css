@@ -1,0 +1,10 @@
+.board-write-page {
+    min-width: 900px;
+    margin: 60px;
+}
+.write-exit-link {
+    padding: 10px 20px 10px 20px;
+    background-color: aqua;
+    margin: 20px;
+    
+}

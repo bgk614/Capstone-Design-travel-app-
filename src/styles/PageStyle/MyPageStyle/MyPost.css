@@ -1,0 +1,11 @@
+.my-post {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    width: 100%;
+    min-height: 600px;
+}
+
+.my-post-head {
+    font-size: 30px;
+    background-color: rgb(255, 255, 255);
+}

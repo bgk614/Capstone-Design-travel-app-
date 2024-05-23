@@ -1,34 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/PageStyle/MyPageStyle/MyPlanPage.css"
+import MyPageNav from "../../components/MyPageConponents/MyPageNavBar";
+import MyPlan from "../../components/MyPageConponents/MyPlan";
 
 export default function MyPlanPage() {
     return (
-        <div>
-            <h1> MyplanPage </h1>
-            <div className="plans">
-                <div className="lp">
-                    지난일정
-                    <Link to='/testplan'>
-                        <div className="plan1">
-                        일정1
-                        </div>
-                    </Link>
-                </div>
-                    
-                <div className="fp">
-                    예정일정
-                    <div className="plan1">
-                        일정2
-                    </div>
-                    <div className="plan1">
-                        일정3
-                    </div>
-                </div>
+        <div >
+            <div className="my-plan-page">
+            <MyPageNav />
+            <MyPlan />
+            <div className="make-new-plan-button">
+                <Link to="/makeplan">새로운 일정</Link>
             </div>
-            <div>일정 만들기</div>
-            <div>일정 삭제하기</div>
-            <div>일정 수정</div>
+        </div>
         </div>
     )
 }
