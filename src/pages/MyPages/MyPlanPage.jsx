@@ -6,12 +6,13 @@ import MyPlan from "../../components/MyPageConponents/MyPlan";
 
 export default function MyPlanPage() {
     return (
-        <div>
-
+        <div >
             <div className="my-plan-page">
             <MyPageNav />
             <MyPlan />
-           
+            <div className="make-new-plan-button">
+                <Link to="/makeplan">새로운 일정</Link>
+            </div>
         </div>
         </div>
     )

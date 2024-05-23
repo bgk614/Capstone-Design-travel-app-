@@ -39,9 +39,7 @@ export default function MyPlan() {
     return (
         <div className="my-schedules">
             <h1>내 일정</h1>
-            <div>
-                <Link to="/create-schedule">새로운 일정</Link>
-            </div>
+            
             <section>
                 <h2>지난 일정 ({pastSchedules.length})</h2>
                 {pastSchedules.length > 0 ? (

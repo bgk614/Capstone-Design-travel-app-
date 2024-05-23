@@ -1,9 +1,10 @@
 import React from "react";
 import MyPageNav from "../../components/MyPageConponents/MyPageNavBar";
+import "../../styles/PageStyle/MyPageStyle/MyPage.css"
 
 export default function MyPage() {
     return (
-        <div>
+        <div className="my-page">
             <div>
 
                 <MyPageNav />

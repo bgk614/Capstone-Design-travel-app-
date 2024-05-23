@@ -24,3 +24,11 @@
     padding: 20px;
     display: flex;
 }
+
+.make-new-plan-button {
+    background-color: aliceblue;
+    width: 100px;
+    height: 30px;
+    border: 1px solid rgb(243, 220, 220);
+    border-radius: 4px;
+}

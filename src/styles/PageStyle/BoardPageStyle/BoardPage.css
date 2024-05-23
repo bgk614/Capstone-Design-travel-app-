@@ -26,9 +26,10 @@
 }
 
 .write-button-link {
-    background-color: aqua;
-    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    font-size: 15px;
     margin: 20px;
     padding: 10px 20px 10px 20px;
-    border-radius: 2px;
+    border-radius: 4px;
+    border: 1px solid;
 }

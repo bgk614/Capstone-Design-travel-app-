@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-
+import "../../styles//PageStyle/MakePlanPage.css";  // CSS 파일 임포트
 export default function MakePlanPage() {
     const [userInput, setUserInput] = useState('');
     const [chat, setChat] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        // Simulate ChatGPT sending the first message
-        sendQuery("Hello! How can I assist you with your plans today?");
+        // Fetch existing chat messages from the backend
+        fetchChatHistory();
     }, []);
+
+    const fetchChatHistory = async () => {
+        try {
+            const response = await axios.get('http://localhost:8000/chat/');
+            setChat(response.data.messages);
+        } catch (error) {
+            console.error('Error fetching chat history:', error);
+        }
+    };
 
     const handleInputChange = (event) => {
         setUserInput(event.target.value);
@@ -19,8 +28,17 @@ export default function MakePlanPage() {
         event.preventDefault();
         if (!userInput.trim()) return;
         updateChat({ sender: 'user', text: userInput });
+        await saveMessage({ sender: 'user', text: userInput });
         sendQuery(userInput);
         setUserInput(''); // Clear input after sending
+    };
+
+    const saveMessage = async (message) => {
+        try {
+            await axios.post('http://localhost:8000/chat/', message);
+        } catch (error) {
+            console.error('Error saving message:', error);
+        }
     };
 
     const sendQuery = async (query) => {
@@ -35,7 +53,9 @@ export default function MakePlanPage() {
                     'Content-Type': 'application/json'
                 }
             });
-            updateChat({ sender: 'chatgpt', text: result.data.choices[0].text.trim() });
+            const responseText = result.data.choices[0].text.trim();
+            updateChat({ sender: 'chatgpt', text: responseText });
+            await saveMessage({ sender: 'chatgpt', text: responseText });
         } catch (error) {
             console.error('Error communicating with ChatGPT:', error);
             updateChat({ sender: 'chatgpt', text: 'Failed to fetch response.' });
