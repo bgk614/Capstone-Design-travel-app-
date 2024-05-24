@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import "../../styles//PageStyle/MakePlanPage.css";  // CSS 파일 임포트
+import "../../styles/PageStyle/MakePlanPage.css";  // CSS 파일 임포트
+
 export default function MakePlanPage() {
     const [userInput, setUserInput] = useState('');
     const [chat, setChat] = useState([]);
@@ -29,7 +30,7 @@ export default function MakePlanPage() {
         if (!userInput.trim()) return;
         updateChat({ sender: 'user', text: userInput });
         await saveMessage({ sender: 'user', text: userInput });
-        sendQuery(userInput);
+        // sendQuery(userInput);
         setUserInput(''); // Clear input after sending
     };
 
@@ -41,28 +42,21 @@ export default function MakePlanPage() {
         }
     };
 
-    const sendQuery = async (query) => {
-        setLoading(true);
-        try {
-            const result = await axios.post('https://api.openai.com/v1/engines/chatgpt/completions', {
-                prompt: query,
-                max_tokens: 150
-            }, {
-                headers: {
-                    'Authorization': `Bearer YOUR_API_KEY`,
-                    'Content-Type': 'application/json'
-                }
-            });
-            const responseText = result.data.choices[0].text.trim();
-            updateChat({ sender: 'chatgpt', text: responseText });
-            await saveMessage({ sender: 'chatgpt', text: responseText });
-        } catch (error) {
-            console.error('Error communicating with ChatGPT:', error);
-            updateChat({ sender: 'chatgpt', text: 'Failed to fetch response.' });
-        } finally {
-            setLoading(false);
-        }
-    };
+    // const sendQuery = async (query) => {
+    //     setLoading(true);
+    //     try {
+    //         const result = await axios.post('http://localhost:8000/query_chatgpt/', { query });
+    //         const responseText = result.data.response;
+    //         updateChat({ sender: 'chatgpt', text: responseText });
+    //         await saveMessage({ sender: 'chatgpt', text: responseText });
+    //     } catch (error) {
+    //         console.error('Error communicating with ChatGPT:', error);
+    //         // 에러 메시지를 문자열로 변환하여 전달
+    //         updateChat({ sender: 'chatgpt', text: `Failed to fetch response: ${error.response?.data?.detail || error.message}` });
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
 
     const updateChat = (message) => {
         setChat(prevChat => [...prevChat, message]);
