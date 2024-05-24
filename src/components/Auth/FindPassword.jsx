@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axiox from 'axios';
-import '../../styles/LogInStyle/FindPassword.css';
+import '../../styles/LoginStyle/FindPassword.css';
 
 function FindPassword() {
     const [Id, setId] = useState("");
