@@ -27,6 +27,7 @@ import MakePlanPage from './pages/MakePlanPages/MakePlanPage';
 import LoginPage from './pages/AuthPages/LoginPage';
 import SignupPage from './pages/AuthPages/SignupPage';
 import FindIDPage from './pages/AuthPages/FindIDPage';
+import FindPasswordPage from './pages/AuthPages/FindPasswordPage';
 
 import BoardWritePage from './pages/BasePages/BoardPages/BoardWritePage';
 import BoardDetailPage from './pages/BasePages/BoardPages/BoardDetailPage';
@@ -65,6 +66,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} /> 
           <Route path="/findid" element={<FindIDPage />} />
+          <Route path="/findpassword" element={<FindPasswordPage />} />
           
           {/* 기본페이지 네비바 */}
           <Route path="/best" element={<BestDestinationsPage />} />
