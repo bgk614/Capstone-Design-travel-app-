@@ -5,7 +5,7 @@ function SignupPage() {
     return (
         <div className='signup-container'>
             <div className="headtext">회원가입</div><br />
-            <SignUp />
+            <Signup />
         </div>
     )
 }
