@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from "react-router-dom";
 import axios from 'axios'; // axios 추가
-import { fetchDataFromAPI } from './api';
 import "./App.css";
 
 import MainPage from './pages/BasePages/MainPage';

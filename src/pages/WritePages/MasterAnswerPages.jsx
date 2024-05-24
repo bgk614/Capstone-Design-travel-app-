@@ -47,4 +47,4 @@ function MasterAnswerPage() {
   );
 }
 
-export default PostForm;
+export default MasterAnswerPage;
