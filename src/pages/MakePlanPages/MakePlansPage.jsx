@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/PageStyle/MakePlanPage.css"
+import "../../styles/PageStyle/MakeplanPage.css"
 
 export default function MakeplanPage() {
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/PageStyle/BoardPage.css"
+import "../../styles/PageStyle/Boardpage.css"
 export default function BoardPage() {
     return (
         <div className="board">

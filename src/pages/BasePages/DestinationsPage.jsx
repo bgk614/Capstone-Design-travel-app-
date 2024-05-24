@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CityNavVertical from '../../components/CityNav/CityNavVertical';
 import DestinationCategoryBar from "../../components/CityNav/DestinationCategoryBar";
-import "../../styles/PageStyle/DestinationsPage.css";
+import "../../styles/PageStyle/Destinationspage.css";
 
 export default function DestinationsPage() {
     return (
@@ -28,6 +28,8 @@ export default function DestinationsPage() {
                         </div>
                     </div>
                 </div>
+                <br></br>
+                <Link to="/tripplace" className="d-write">Upload</Link>
             </div>
         </div>
     )

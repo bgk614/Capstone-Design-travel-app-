@@ -1,5 +1,6 @@
 import React from "react";
-import "../../styles/PageStyle/FAQPage.css"
+import { Link } from "react-router-dom";
+import "../../styles/PageStyle/Faqpage.css"
 export default function FAQPage() {
     return (
         <div>
@@ -13,9 +14,10 @@ export default function FAQPage() {
                 <div className="faqlist">
                     공지2
                 </div>
-                </div>
+                <Link to="/createfaq" className="faqlist">추가하기</Link> 
+            </div>
             <div className="faqbox">
-            <div>많이하는 질문</div>
+                많이하는 질문
                 <div className="faqlist">
                     질문1
                 </div>
@@ -28,7 +30,7 @@ export default function FAQPage() {
                 <div className="faqlist">
                     질문5
                 </div>
-                <div>질문하기</div>
+                <Link to="/createfaq" className="faqlist">질문하기</Link> 
             </div>
             
         </div>
