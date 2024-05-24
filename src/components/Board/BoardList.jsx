@@ -26,7 +26,7 @@ const BoardList = () => {
       await axios.delete(`http://localhost:8000/board/${id}`);
       alert('게시글이 성공적으로 삭제되었습니다.');
       // 삭제 후 게시글 목록을 다시 불러옵니다.
-      setBoardList(boardList.filter(board => board.idx !== id));
+      setBoardList(boardList.filter(board => board.id !== id));
     } catch (error) {
       console.error('게시글 삭제 중 오류 발생:', error);
       alert('게시글 삭제 중 오류가 발생했습니다.');
@@ -38,13 +38,13 @@ const BoardList = () => {
       <h1>게시판 목록</h1>
       {boardList.map((board, index) => (
         <div key={index} className="board-item">
-          <Link to={`/detail/${board.idx}`}>
+          <Link to={`/detail/${board.id}`}>
             <h2>{board.title}</h2>
           </Link>
           <p>{board.contents}</p>
           <p>{board.created_by}</p>
           <p className="date">{formatDate(board.created_at)}</p>
-          <button className="board-delete-button" onClick={() => handleDelete(board.idx)}>삭제</button> {/* 삭제 버튼 추가 */}
+          <button className="board-delete-button" onClick={() => handleDelete(board.id)}>삭제</button> {/* 삭제 버튼 추가 */}
         </div>
       ))}
     </div>
