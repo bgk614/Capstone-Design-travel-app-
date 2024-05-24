@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from "react-router-dom"
-import Login from '../../components/Auth/Login';
+import LogIn from '../../components/Auth/LogIn';
 
-function LoginPage() {
+function LogInPage() {
     return (
         <div className='login-square'>
             <div className="headtext">로그인</div><br />
-            <Login />
+            <LogIn />
             <div className="link">
                 <Link className="findid-link" to="/findid">
                     아이디 찾기
                 </Link>
-                <Link className="findpassword-link" to="/findpassword">
-                    비밀번호 찾기
+                <Link className="resetpassword-link" to="/resetpassword">
+                    비밀번호 재설정
                 </Link>
                 <Link className="signup-link" to="/signup">
                     회원가입
@@ -22,4 +22,4 @@ function LoginPage() {
     )
 }
 
-export default LoginPage;
+export default LogInPage;

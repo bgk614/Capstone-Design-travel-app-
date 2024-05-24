@@ -9,7 +9,7 @@ import Footer from './components/Layout/Footer/Footer';
 import MyPage from './pages/MyPages/MyPage';
 import MyLikePage from './pages/MyPages/MyLikePage';
 import MyPlanPage from './pages/MyPages/MyPlanPage';
-import LoginPage from './pages/AuthPages/LoginPage';
+import LogInPage from './pages/AuthPages/LogInPage';
 
 import BestDestinationsPage from './pages/BestPages/BestDestinationsPage';
 import BestPlanPage from './pages/BestPages/BestPlanPage';
@@ -21,7 +21,9 @@ import PlanPage from './pages/BasePages/PlanPage';
 import FAQPage from './pages/BasePages/FAQPage';
 
 import MakePlanPage from './pages/MakePlanPages/MakePlanPage';
-import SignupPage from './pages/AuthPages/SignupPage';
+import SignUpPage from './pages/AuthPages/SignUpPage';
+import FindIDPage from './pages/AuthPages/FindIDPage';
+import ResetPasswordPage from './pages/AuthPages/ResetPasswordPage';
 import TestPlanPage from './pages/BasePages/TestPlanPage';
 
 function App() {
@@ -37,9 +39,10 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/mylike" element={<MyLikePage />} />
           <Route path="/myplan" element={<MyPlanPage />} />
-          <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} /> 
-
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/signup" element={<SignUpPage />} /> 
+          <Route path="/findid" element={<FindIDPage />} />
+          <Route path="/resetpassword" element={<ResetPasswordPage />} />
           <Route path="/best" element={<BestDestinationsPage />} />
           <Route path="/board" element={<BoardPage />} />
           <Route path="/destinations" element={<DestinationsPage />} />
