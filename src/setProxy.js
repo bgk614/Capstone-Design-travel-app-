@@ -5,8 +5,6 @@ module.exports = function(app) {
     '/api',
     createProxyMiddleware({
       target: 'http://localhost:8080',	
-        // 서버 URL or localhost:설정한포트번호
-        // 백엔드 포트
       changeOrigin: true,
     })
   );
