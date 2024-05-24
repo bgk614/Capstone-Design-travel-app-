@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../../styles/PageStyle/Destinationspage.css";
+// import "../../styles/PageStyle/DestinationPage.css";
 
 function TripPlacePage() {
     const [name, setName] = useState('');  // 이름 상태 추가

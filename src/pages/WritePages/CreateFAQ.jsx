@@ -48,7 +48,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../../styles/PageStyle/Writepagestyle.css"
+import "../../styles/PageStyle/WritePageStyle.css"
 
 function CreateFAQ() {
   const navigate = useNavigate();
