@@ -13,7 +13,6 @@ import MyAccountSettingsPage from './pages/MyPages/MyAccountSettingsPage';
 import MyPlanPage from './pages/MyPages/MyPlanPage';
 import MyTravelPreferencePage from './pages/MyPages/MyTravelPreferencePage';
 import MyPostsPage from './pages/MyPages/MyPostsPage';
-import LoginPage from './pages/AuthPages/LoginPage';
 
 import BestDestinationsPage from './pages/BestPages/BestDestinationsPage';
 import BestPlanPage from './pages/BestPages/BestPlanPage';
@@ -23,9 +22,11 @@ import DestinationsPage from './pages/BasePages/DestinationsPage';
 import BoardPage from './pages/BasePages/BoardPages/BoardPage';
 import PlanPage from './pages/BasePages/PlanPage';
 import FAQPage from './pages/BasePages/FAQPage';
-
 import MakePlanPage from './pages/MakePlanPages/MakePlanPage';
+
+import LoginPage from './pages/AuthPages/LoginPage';
 import SignupPage from './pages/AuthPages/SignupPage';
+import FindIDPage from './pages/AuthPages/FindIDPage';
 
 import BoardWritePage from './pages/BasePages/BoardPages/BoardWritePage';
 import BoardDetailPage from './pages/BasePages/BoardPages/BoardDetailPage';
@@ -63,6 +64,7 @@ function App() {
 
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} /> 
+          <Route path="/findid" element={<FindIDPage />} />
           
           {/* 기본페이지 네비바 */}
           <Route path="/best" element={<BestDestinationsPage />} />
