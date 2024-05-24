@@ -28,6 +28,8 @@ export default function DestinationsPage() {
                         </div>
                     </div>
                 </div>
+                <br></br>
+                <Link to="tripplace" className="d-write">Upload</Link>
             </div>
         </div>
     )
