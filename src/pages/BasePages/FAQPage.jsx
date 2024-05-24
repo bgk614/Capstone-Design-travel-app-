@@ -20,7 +20,7 @@ export default function FAQPage({ notices }) {
                 <Link to="/createfaq" className="faqlist">추가하기</Link> 
             </div>
             <div className="faqbox">
-                <h2>많이하는 질문</h2>
+                <h2>많이하는 질문 </h2>
                 <div className="faqlist">
                     질문1
                 </div>
