@@ -32,6 +32,10 @@ import FindPasswordPage from './pages/AuthPages/FindPasswordPage';
 import BoardWritePage from './pages/BasePages/BoardPages/BoardWritePage';
 import BoardDetailPage from './pages/BasePages/BoardPages/BoardDetailPage';
 
+import CreateFAQ from './pages/WritePages/CreateFAQ';
+import MasterAnswerPage from './pages/WritePages/MasterAnswerPages';
+import TripPlacePage from './pages/WritePages/TripPlacePage';
+
 function App() {
   const [message, setMessage]=useState([]);
   // useEffect(()=>{
@@ -74,6 +78,8 @@ function App() {
           <Route path="/destinations" element={<DestinationsPage />} />
           <Route path="/plan" element={<PlanPage />} />
           <Route path="/faq" element={<FAQPage />} />
+
+          <Route path="Createfaq" element={<CreateFAQ />} /> 
 
           <Route path="/makeplan" element={<MakePlanPage />} />
 
