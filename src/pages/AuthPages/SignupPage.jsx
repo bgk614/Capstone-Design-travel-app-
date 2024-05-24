@@ -3,10 +3,10 @@ import Signup from '../../components/Auth/Signup';
 
 function SignupPage() {
     return (
-        <>
-        <div className="headtext">회원가입</div><br />
-        <Signup />
-        </>
+        <div className='signup-container'>
+            <div className="headtext">회원가입</div><br />
+            <SignUp />
+        </div>
     )
 }
 
