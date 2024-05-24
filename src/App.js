@@ -13,7 +13,6 @@ import MyAccountSettingsPage from './pages/MyPages/MyAccountSettingsPage';
 import MyPlanPage from './pages/MyPages/MyPlanPage';
 import MyTravelPreferencePage from './pages/MyPages/MyTravelPreferencePage';
 import MyPostsPage from './pages/MyPages/MyPostsPage';
-import LoginPage from './pages/AuthPages/LoginPage';
 
 import BestDestinationsPage from './pages/BestPages/BestDestinationsPage';
 import BestPlanPage from './pages/BestPages/BestPlanPage';
@@ -23,26 +22,26 @@ import DestinationsPage from './pages/BasePages/DestinationsPage';
 import BoardPage from './pages/BasePages/BoardPages/BoardPage';
 import PlanPage from './pages/BasePages/PlanPage';
 import FAQPage from './pages/BasePages/FAQPage';
-
 import MakePlanPage from './pages/MakePlanPages/MakePlanPage';
+
+import LoginPage from './pages/AuthPages/LoginPage';
 import SignupPage from './pages/AuthPages/SignupPage';
 import FindIDPage from './pages/AuthPages/FindIDPage';
-import TestPlanPage from './pages/BasePages/TestPlanPage';
 
 import BoardWritePage from './pages/BasePages/BoardPages/BoardWritePage';
 import BoardDetailPage from './pages/BasePages/BoardPages/BoardDetailPage';
 
 function App() {
   const [message, setMessage]=useState([]);
-  useEffect(()=>{
-    fetch("/api/demo-web")
-        .then((response)=>{
-          return response.json();
-        })
-        .then((data)=>{
-            setMessage(data);
-        });
-  },[]);
+  // useEffect(()=>{
+  //   fetch("/api/demo-web")
+  //       .then((response)=>{
+  //         return response.json();
+  //       })
+  //       .then((data)=>{
+  //           setMessage(data);
+  //       });
+  // },[]);
 
     return (
 
@@ -80,9 +79,7 @@ function App() {
           <Route path="/bestdestinations" element={<BestDestinationsPage />} />
           <Route path="/bestplan" element={<BestPlanPage />} />
           <Route path="/bestpost" element={<BestPostPage />} />
-          <Route path="/testplan" element={<TestPlanPage />} />
 
-          <Route path="/testplan" element={<TestPlanPage />} />
 
           {/* 게시판 페이지 */}
           <Route path="/write" element={<BoardWritePage />} />
