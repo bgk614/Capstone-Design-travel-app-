@@ -38,6 +38,11 @@ export default function MakePlanPage() {
         setUserInput('');  // 입력 필드를 초기화
     };
 
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+      };    
+
     const saveMessage = async (message) => {
         // 메시지를 백엔드에 저장하는 함수
         try {
@@ -74,7 +79,7 @@ export default function MakePlanPage() {
             {chat.map((message, index) => (
                 <div key={index} className={`message ${message.sender}`}>
                     <p>{message.text}</p>
-                    <small>{new Date(message.created_at).toLocaleString()}</small>  
+                    <small>{formatDate(message.created_at).toLocaleString()}</small>  
                 </div>
             ))}
             <form onSubmit={handleSubmit} className="response-form">
