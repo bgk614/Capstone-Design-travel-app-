@@ -1,6 +1,6 @@
 import React from "react";
-import "../../../styles/PageStyle/BoardPageStyle/BoardWritePage.css"
-import BoardWrite from "../../../components/Board/BoardWrite";
+import "../../styles/PageStyle/BoardPageStyle/BoardWritePage.css"
+import BoardWrite from "../../components/Board/BoardWrite";
 import { Link } from "react-router-dom";
 
 export default function BoardWritePage() {

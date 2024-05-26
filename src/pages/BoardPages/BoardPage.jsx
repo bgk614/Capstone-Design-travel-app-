@@ -1,6 +1,6 @@
 import React from "react";
-import "../../../styles/PageStyle/BoardPageStyle/BoardPage.css"
-import BoardList from "../../../components/Board/BoardList";
+import "../../styles/PageStyle/BoardPageStyle/BoardPage.css"
+import BoardList from "../../components/Board/BoardList";
 import { Link } from "react-router-dom";
 
 export default function BoardPage() {

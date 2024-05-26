@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../../styles/BoardStyle/BoardWrite.css"
 
+const Server_IP = process.env.REACT_APP_Local_Server_IP;
+
 const BoardWrite = () => {
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
@@ -19,7 +21,7 @@ const BoardWrite = () => {
     };
 
     try {
-      await axios.post('http://localhost:8000/board/', newBoard);
+      await axios.post(`${Server_IP}/board`, newBoard);
       alert('게시글이 성공적으로 작성되었습니다.');
       navigate('/board'); // 게시글 목록 페이지로 이동
     } catch (error) {

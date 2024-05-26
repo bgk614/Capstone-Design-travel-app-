@@ -3,12 +3,15 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import "../../styles/BoardStyle/BoardDetail.css";
 
+const Server_IP = process.env.REACT_APP_Local_Server_IP;
+
 const BoardDetail = () => {
   const { id } = useParams(); // URL에서 게시글 ID 가져오기
   const [board, setBoard] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/board/${id}`)
+    console.log(`Fetching board details from ${Server_IP}/board/${id}`);
+    axios.get(`${Server_IP}/board/${id}`)
       .then(response => {
         setBoard(response.data); // 응답 데이터를 상태에 저장
       })

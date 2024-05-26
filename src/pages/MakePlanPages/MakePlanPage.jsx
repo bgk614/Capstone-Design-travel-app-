@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import "../../styles/PageStyle/MakePlanPage.css";  // CSS 파일 임포트
 
+const Server_IP = process.env.REACT_APP_Local_Server_IP;
+
 export default function MakePlanPage() {
     const [userInput, setUserInput] = useState('');  // 사용자 입력 상태
     const [chat, setChat] = useState([]);  // 채팅 메시지 상태
@@ -15,7 +17,7 @@ export default function MakePlanPage() {
     const fetchChatHistory = async () => {
         // 기존 채팅 메시지를 가져오는 함수
         try {
-            const response = await axios.get('http://localhost:8000/chat/');
+            const response = await axios.get(`${Server_IP}/chat`);
             setChat(response.data.messages);  // 채팅 메시지 상태 업데이트
         } catch (error) {
             console.error('Error fetching chat history:', error);  // 에러 로그 출력
@@ -46,7 +48,7 @@ export default function MakePlanPage() {
     const saveMessage = async (message) => {
         // 메시지를 백엔드에 저장하는 함수
         try {
-            await axios.post('http://localhost:8000/chat/', message);
+            await axios.post(`${Server_IP}/chat`, message);
         } catch (error) {
             console.error('Error saving message:', error);  // 에러 로그 출력
         }
@@ -56,7 +58,7 @@ export default function MakePlanPage() {
         // OpenAI API에 질문을 보내는 함수
         setLoading(true);  // 로딩 상태 설정
         try {
-            const result = await axios.post('http://localhost:8000/chat/query_chatgpt/', { sender: 'user', text: query });
+            const result = await axios.post(`${Server_IP}/chat/query_chatgpt`, { sender: 'user', text: query });
             const responseText = result.data.text;
             updateChat({ sender: 'chatgpt', text: responseText, created_at: new Date().toISOString() });  // OpenAI 응답 추가
             

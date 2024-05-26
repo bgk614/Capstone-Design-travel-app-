@@ -19,9 +19,9 @@ import BestPlanPage from './pages/BestPages/BestPlanPage';
 import BestPostPage from './pages/BestPages/BestPostPage';
 
 import DestinationsPage from './pages/BasePages/DestinationsPage';
-import BoardPage from './pages/BasePages/BoardPages/BoardPage';
+import BoardPage from './pages/BoardPages/BoardPage';
 import PlanPage from './pages/BasePages/PlanPage';
-import FAQPage from './pages/BasePages/FAQPage';
+import FAQPage from './pages/FAQPages/FAQPage';
 import MakePlanPage from './pages/MakePlanPages/MakePlanPage';
 
 import LoginPage from './pages/AuthPages/LoginPage';
@@ -29,25 +29,16 @@ import SignupPage from './pages/AuthPages/SignupPage';
 import FindIDPage from './pages/AuthPages/FindIDPage';
 import FindPasswordPage from './pages/AuthPages/FindPasswordPage';
 
-import BoardWritePage from './pages/BasePages/BoardPages/BoardWritePage';
-import BoardDetailPage from './pages/BasePages/BoardPages/BoardDetailPage';
+import BoardWritePage from './pages/BoardPages/BoardWritePage';
+import BoardDetailPage from './pages/BoardPages/BoardDetailPage';
 
-import CreateFAQ from './pages/WritePages/CreateFAQ';
-import MasterAnswerPage from './pages/WritePages/MasterAnswerPages';
-import TripPlacePage from './pages/WritePages/TripPlacePage';
+import CreateFAQPage from './pages/FAQPages/CreateFAQPage';
+import CreateNoticePage from './pages/FAQPages/CreateNoticePage';
+import MasterAnswerPage from './pages/FAQPages/MasterAnswerPage';
+import TripPlacePage from './pages/TripPlacePages/TripPlacePage';
 
 function App() {
   const [message, setMessage]=useState([]);
-  // useEffect(()=>{
-  //   fetch("/api/demo-web")
-  //       .then((response)=>{
-  //         return response.json();
-  //       })
-  //       .then((data)=>{
-  //           setMessage(data);
-  //       });
-  // },[]);
-
     return (
 
       <div className="App">
@@ -79,7 +70,8 @@ function App() {
           <Route path="/plan" element={<PlanPage />} />
           <Route path="/faq" element={<FAQPage />} />
 
-          <Route path="Createfaq" element={<CreateFAQ />} /> 
+          <Route path="/faq/new" element={<CreateFAQPage />} /> 
+          <Route path="/notice/new" element={<CreateNoticePage />} />
 
           <Route path="/makeplan" element={<MakePlanPage />} />
 
@@ -88,14 +80,13 @@ function App() {
           <Route path="/bestplan" element={<BestPlanPage />} />
           <Route path="/bestpost" element={<BestPostPage />} />
 
-
           {/* 게시판 페이지 */}
           <Route path="/write" element={<BoardWritePage />} />
           <Route path="/detail/:id" element={<BoardDetailPage />} />
 
+
         </Routes>
         </div>
-        
         <Footer />
         </div>
     );

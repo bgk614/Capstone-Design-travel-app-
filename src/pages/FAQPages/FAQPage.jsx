@@ -29,26 +29,26 @@ export default function FAQPage() {
             <h1> FAQ </h1>
             <div className="info">
                 <h2>공지사항</h2>
-                <div className="faqlist">
+                <div>
                     {/* 공지사항 목록을 반복하여 출력 */}
                     {notices.length === 0 ? (
                         <p>No notices available</p> // notices가 빈 배열일 때
                     ) : (
                         notices.map((notice, index) => (
-                            <div className="faqlist" key={index}>
+                            <div className="/createnotice" key={index}>
                                 {notice.title}
                             </div>
                         ))
                     )}
                 </div>
-                <Link to="/createfaq" className="faqlist">추가하기</Link> 
+                <Link to="/notice/new">추가하기</Link> 
             </div>
             <div className="faqbox">
                 <h2>많이하는 질문</h2>
-                <div className="faqlist">
+                <div>
                     {/* 추가적으로 자주 묻는 질문들을 여기에 나열 */}
                 </div>
-                <Link to="/createfaq" className="faqlist">질문하기</Link> 
+                <Link to="/faq/new">질문하기</Link> 
             </div>
         </div>
     );
