@@ -49,25 +49,30 @@ function FindID() {
         try {
             if (!isCodeSent) {
                 // 인증번호 요청
-                const response = await axiox.post('YOUR_SPRING_SERVER_ENDPOINT/send-code', { phoneNumber });
+                const response = await axiox.post('http://localhost:8000/send-code/', { phoneNumber });
                 setSentCode(response.data.code);
                 setIsCodeSent(true);
-            } else {
-                // 인증번호 확인 및 아이디 찾기
+                setErrors({});
+            } else if (!isVerified) {
+                // 인증번호 확인
                 if (verificationCode !== sentCode) {
                     setErrors({ verificationCode: '인증번호가 일치하지 않습니다.' });
                     return;
                 }
-                const response = await axiox.post('YOUR_SPRING_SERVER_ENDPOINT/verify-code', { phoneNumber, name, verificationCode });
+                const response = await axiox.post('http://localhost:8000/verify-code/', { phoneNumber, name, verificationCode });
                 if (response.data.success) {
-                    setFoundId(response.data.userId);
                     setIsVerified(true);
+                    setErrors({});
                 } else {
                     setErrors({ formError: response.data.message || '등록된 정보가 없습니다.' });
                     setIsVerified(false);
                 }
+            } else {
+                // 아이디 찾기
+                const response = await axiox.post('http://localhost:8000/find-id/', { name, phoneNumber });
+                setFoundId(response.data.userId);
+                setErrors({});
             }
-            setErrors({});
         } catch (error) {
             console.error('요청 실패:', error);
             setErrors({ apiError: '요청에 실패했습니다. 다시 시도하세요.' });
