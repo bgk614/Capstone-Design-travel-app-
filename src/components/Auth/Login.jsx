@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axiox from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/LoginStyle/Login.css'; 
 // import { useDispatch } from 'react-redux';
 // import { loginUser } from '../../../_actions/user_action';
+import { AuthContext } from '../../App';
 
 function Login() {
         const [Id, setId] = useState("");
@@ -11,6 +12,7 @@ function Login() {
         const [errorMessage, setErrorMessage] = useState("");
         const [isLoading, setIsLoading] = useState(false); // 비동기 요청의 로딩 상태 관리
         const navigate = useNavigate(); // useNavigate 훅 사용
+        const { setIsAuthenticated } = useContext(AuthContext);
 
         const onIdHandler = (event) => {
             setId(event.currentTarget.value);
@@ -51,10 +53,10 @@ function Login() {
               console.log(response.data);
               // 예를 들어 로그인 후 토큰을 localStorage에 저장하거나 상태 관리 라이브러리에 저장
               // localStorage.setItem('token', response.data.token);
-        
+              setIsAuthenticated(true);
               // 로그인 성공 후 페이지 리다이렉션
               // history.push('/home'); // 'react-router-dom'의 useHistory 훅 사용시
-              navigate('/home'); // useNavigate 훅 사용
+              navigate('/'); // useNavigate 훅 사용
 
             } catch (error) {
               // 로그인 실패 처리

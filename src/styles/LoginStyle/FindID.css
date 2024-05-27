@@ -1,16 +1,7 @@
-.headtext {
-    text-align: center;
-    font-size: 40px;
-    font-family: 'NanumBarunGothic';
-    margin-bottom: 10px;
-    width: 300px;
-  }
-
 .findid-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px;
     border-radius: 10px;
     background-color: #d4d4d4;
     text-align: center;
@@ -24,31 +15,29 @@
 
 .form-group {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     margin-bottom: 15px;
     width: 100%;
 }
 
 .form-group input {
     padding: 10px;
-    flex: 1;
-    border: 1px solid #d4d4d4;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 10px;
+    width: calc(100% - 22px);
 }
 
 .button-send-code, .button-verify-code, .button-find-id {
-    margin-left: 10px;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #000000;
     color: white;
     cursor: pointer;
-}
-
-.button-send-code:disabled, .button-verify-code:disabled, .button-find-id:disabled {
-    background-color: #d4d4d4;
-    cursor: not-allowed;
+    margin-top: 10px;
+    width: 100%;
 }
 
 .error-message {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
-import {useState, useEffect} from 'react';
+import { useState, useEffect, createContext } from 'react';
 import "./App.css";
 
 import MainPage from './pages/BasePages/MainPage';
@@ -36,7 +36,11 @@ import CreateFAQ from './pages/WritePages/CreateFAQ';
 import MasterAnswerPage from './pages/WritePages/MasterAnswerPages';
 import TripPlacePage from './pages/WritePages/TripPlacePage';
 
+// 로그인 상태를 관리하는 Context 생성
+export const AuthContext = createContext();
+
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [message, setMessage]=useState([]);
   // useEffect(()=>{
   //   fetch("/api/demo-web")
@@ -48,57 +52,52 @@ function App() {
   //       });
   // },[]);
 
-    return (
-
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       <div className="App">
         <Header />
         <div className='center-page'>
-        <div>
-        {message}
+          <div>{message}</div>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            
+            {/* 우측상단 네비바 */}
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/mylike" element={<MyLikePage />} />
+            <Route path="/myplan" element={<MyPlanPage />} />
+            <Route path="/myaccount" element={<MyAccountSettingsPage />} />
+            <Route path="/mypost" element={<MyPostsPage />} />
+            <Route path="/mytravelpreference" element={<MyTravelPreferencePage />} />
+
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/findid" element={<FindIDPage />} />
+            <Route path="/findpassword" element={<FindPasswordPage />} />
+
+            {/* 기본페이지 네비바 */}
+            <Route path="/best" element={<BestDestinationsPage />} />
+            <Route path="/board" element={<BoardPage />} />
+            <Route path="/destinations" element={<DestinationsPage />} />
+            <Route path="/plan" element={<PlanPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+
+            <Route path="/Createfaq" element={<CreateFAQ />} />
+            <Route path="/makeplan" element={<MakePlanPage />} />
+
+            {/* 베스트 페이지 */}
+            <Route path="/bestdestinations" element={<BestDestinationsPage />} />
+            <Route path="/bestplan" element={<BestPlanPage />} />
+            <Route path="/bestpost" element={<BestPostPage />} />
+
+            {/* 게시판 페이지 */}
+            <Route path="/write" element={<BoardWritePage />} />
+            <Route path="/detail/:id" element={<BoardDetailPage />} />
+          </Routes>
         </div>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          
-          {/* 우측상단 네비바 */}
-          <Route path="/mypage" element={<MyPage />} />
-          <Route path="/mylike" element={<MyLikePage />} />
-          <Route path="/myplan" element={<MyPlanPage />} />
-          <Route path="/myaccount" element={<MyAccountSettingsPage />} />
-          <Route path="/mypost" element={<MyPostsPage />} />
-          <Route path="/mytravelpreference" element={<MyTravelPreferencePage />} />
-
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} /> 
-          <Route path="/findid" element={<FindIDPage />} />
-          <Route path="/findpassword" element={<FindPasswordPage />} />
-          
-          {/* 기본페이지 네비바 */}
-          <Route path="/best" element={<BestDestinationsPage />} />
-          <Route path="/board" element={<BoardPage />} />
-          <Route path="/destinations" element={<DestinationsPage />} />
-          <Route path="/plan" element={<PlanPage />} />
-          <Route path="/faq" element={<FAQPage />} />
-
-          <Route path="Createfaq" element={<CreateFAQ />} /> 
-
-          <Route path="/makeplan" element={<MakePlanPage />} />
-
-          {/* 베스트 페이지 */}
-          <Route path="/bestdestinations" element={<BestDestinationsPage />} />
-          <Route path="/bestplan" element={<BestPlanPage />} />
-          <Route path="/bestpost" element={<BestPostPage />} />
-
-
-          {/* 게시판 페이지 */}
-          <Route path="/write" element={<BoardWritePage />} />
-          <Route path="/detail/:id" element={<BoardDetailPage />} />
-
-        </Routes>
-        </div>
-        
         <Footer />
-        </div>
-    );
+      </div>
+    </AuthContext.Provider>
+  );
 
 }
 export default App;

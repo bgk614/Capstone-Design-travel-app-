@@ -1,10 +1,18 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, { useContext } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import '../../../styles/HeaderStyle/TopNav.css'
-
+import { AuthContext } from '../../../App';
 
 
 export default function TopMenu() {
+    const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        setIsAuthenticated(false);
+        navigate('/');
+    };
+
     return (
             <div className="topmenu">
                 <Link className="menu-link" to='/mypage'>
@@ -16,9 +24,15 @@ export default function TopMenu() {
                 <Link className="menu-link" to='/myplan'>
                     MY PLAN
                 </Link>
-                <Link className="menu-link" to='/login'>
-                    LOGIN
-                </Link>
+                {isAuthenticated ? (
+                    <Link className="menu-link" to='/' onClick={handleLogout}>
+                        LOGOUT
+                    </Link>
+                ) : (
+                    <Link className="menu-link" to='/login'>
+                        LOGIN
+                    </Link>
+                )}
             </div> 
     );
 }
