@@ -1,6 +1,7 @@
 import React from 'react';
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {useState, useEffect} from 'react';
+import axios from 'axios';
 import "./App.css";
 
 import MainPage from './pages/BasePages/MainPage';
@@ -17,6 +18,7 @@ import MyPostsPage from './pages/MyPages/MyPostsPage';
 import BestDestinationsPage from './pages/BestPages/BestDestinationsPage';
 import BestPlanPage from './pages/BestPages/BestPlanPage';
 import BestPostPage from './pages/BestPages/BestPostPage';
+import TourDetailPage from './pages/BestPages/TourDetailPage';
 
 import DestinationsPage from './pages/BasePages/DestinationsPage';
 import BoardPage from './pages/BasePages/BoardPages/BoardPage';
@@ -33,29 +35,39 @@ import BoardWritePage from './pages/BasePages/BoardPages/BoardWritePage';
 import BoardDetailPage from './pages/BasePages/BoardPages/BoardDetailPage';
 
 import CreateFAQ from './pages/WritePages/CreateFAQ';
-import MasterAnswerPage from './pages/WritePages/MasterAnswerPages';
-import TripPlacePage from './pages/WritePages/TripPlacePage';
+import MasterAnswerPages from './pages/WritePages/MasterAnswerPages';
+// import TripPlacePage from './pages/WritePages/TripPlacePage';
+
 
 function App() {
-  const [message, setMessage]=useState([]);
-  // useEffect(()=>{
-  //   fetch("/api/demo-web")
-  //       .then((response)=>{
-  //         return response.json();
-  //       })
-  //       .then((data)=>{
-  //           setMessage(data);
-  //       });
-  // },[]);
+  const [destinations, setDestinations] = useState([]);
+  const [message, setMessage] = useState([]);
 
-    return (
+  useEffect(() => {
+    axios.get('http://localhost:8000/tours/')
+      .then(response => {
+        setDestinations(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the data!', error);
+      });
+  }, []);
 
-      <div className="App">
-        <Header />
-        <div className='center-page'>
-        <div>
-        {message}
-        </div>
+  return (
+    <div className="App">
+      <Header />
+      <div className='center-page'>
+      <h1>Travel Destinations</h1>
+          <div className="destinations">
+            {destinations.map(tour => (
+              <div key={tour.id} className="destination">
+                <img src={tour.image} alt={tour.name} />
+                <h2>{tour.name}</h2>
+                <p>{tour.address}</p>
+                <p>{tour.description}</p>
+              </div>
+            ))}
+          </div>
         <Routes>
           <Route path="/" element={<MainPage />} />
           
@@ -74,12 +86,14 @@ function App() {
           
           {/* 기본페이지 네비바 */}
           <Route path="/best" element={<BestDestinationsPage />} />
+          <Route path="/tours/:id" element={<TourDetailPage />} />
           <Route path="/board" element={<BoardPage />} />
-          <Route path="/destinations" element={<DestinationsPage />} />
+          <Route path="/destinations" element={<DestinationsPage destinations={destinations} />} />
           <Route path="/plan" element={<PlanPage />} />
           <Route path="/faq" element={<FAQPage />} />
 
-          <Route path="Createfaq" element={<CreateFAQ />} /> 
+          <Route path="/createfaq" element={<CreateFAQ />} /> 
+          <Route path="/masteranswerpages" element={<MasterAnswerPages />} /> 
 
           <Route path="/makeplan" element={<MakePlanPage />} />
 
@@ -87,18 +101,15 @@ function App() {
           <Route path="/bestdestinations" element={<BestDestinationsPage />} />
           <Route path="/bestplan" element={<BestPlanPage />} />
           <Route path="/bestpost" element={<BestPostPage />} />
-
+          <Route path="/tours/:id" element={<TourDetail />} />
 
           {/* 게시판 페이지 */}
           <Route path="/write" element={<BoardWritePage />} />
           <Route path="/detail/:id" element={<BoardDetailPage />} />
-
         </Routes>
-        </div>
-        
-        <Footer />
-        </div>
-    );
-
+      </div>
+      <Footer />
+    </div>
+  );
 }
 export default App;
