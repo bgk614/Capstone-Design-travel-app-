@@ -1,0 +1,32 @@
+
+  /* 상세 페이지 컨테이너 스타일 */
+  .notice-detail {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* 제목 스타일 */
+  .notice-detail h1 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  /* 내용 스타일 */
+  .notice-detail p {
+    color: #555555;
+    line-height: 1.6;
+  }
+  
+  /* 날짜 스타일 */
+  .notice-detail .date {
+    text-align: right;
+    color: #888888;
+    font-size: 0.9em;
+    margin-top: 20px;
+  }
+  

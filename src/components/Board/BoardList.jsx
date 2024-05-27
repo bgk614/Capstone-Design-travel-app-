@@ -41,7 +41,7 @@ const BoardList = () => {
       <h1>게시판 목록</h1>
       {boardList.map((board, index) => (
         <div key={index} className="board-item">
-          <Link to={`/detail/${board.id}`}>
+          <Link to={`/board/${board.id}`}>
             <h2>{board.title}</h2>
           </Link>
           <p>{board.contents}</p>

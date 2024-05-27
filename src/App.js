@@ -32,10 +32,13 @@ import FindPasswordPage from './pages/AuthPages/FindPasswordPage';
 import BoardWritePage from './pages/BoardPages/BoardWritePage';
 import BoardDetailPage from './pages/BoardPages/BoardDetailPage';
 
-import CreateFAQPage from './pages/FAQPages/CreateFAQPage';
-import CreateNoticePage from './pages/FAQPages/CreateNoticePage';
+import QuestionWritePage from './pages/FAQPages/QuestionWritePage';
+import NoticeWritePage from './pages/FAQPages/NoticeWritePage';
 import MasterAnswerPage from './pages/FAQPages/MasterAnswerPage';
 import TripPlacePage from './pages/TripPlacePages/TripPlacePage';
+
+import NoticeDetailPage from './pages/FAQPages/NoticeDetailPage';
+import QuestionDetailPage from './pages/FAQPages/QuestionDetailPage';
 
 function App() {
   const [message, setMessage]=useState([]);
@@ -70,8 +73,11 @@ function App() {
           <Route path="/plan" element={<PlanPage />} />
           <Route path="/faq" element={<FAQPage />} />
 
-          <Route path="/faq/new" element={<CreateFAQPage />} /> 
-          <Route path="/notice/new" element={<CreateNoticePage />} />
+          {/* 문의 페이지 */}
+          <Route path="/question/new" element={<QuestionWritePage />} /> 
+          <Route path="/notice/new" element={<NoticeWritePage />} />
+          <Route path="/notice/:id" element={<NoticeDetailPage />} />
+          <Route path="/question/:id" element={<QuestionDetailPage />} />
 
           <Route path="/makeplan" element={<MakePlanPage />} />
 
@@ -82,7 +88,9 @@ function App() {
 
           {/* 게시판 페이지 */}
           <Route path="/write" element={<BoardWritePage />} />
-          <Route path="/detail/:id" element={<BoardDetailPage />} />
+          <Route path="/board/:id" element={<BoardDetailPage />} />
+
+          
 
 
         </Routes>
