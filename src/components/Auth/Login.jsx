@@ -42,7 +42,7 @@ function Login() {
             setIsLoading(true);
             try {
               // 스프링 백엔드의 로그인 엔드포인트로 POST 요청 보내기
-              const response = await axiox.post('YOUR_SPRING_SERVER_ENDPOINT/login', {
+              const response = await axiox.post('http://localhost:8000/login/', {
                 username: Id, // 백엔드에서 사용하는 파라미터 이름에 맞추기
                 password: Password
               });

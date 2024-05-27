@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 import "../../styles/BoardStyle/BoardList.css";
 
+const Server_IP = process.env.REACT_APP_Local_Server_IP;
+
 const BoardList = () => {
   const [boardList, setBoardList] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/board/')
+    console.log(`Fetching board list from ${Server_IP}/board`);
+    axios.get(`${Server_IP}/board`)
       .then(response => {
         setBoardList(response.data.boards);  // 'boards' 키로 접근
       })
@@ -23,7 +26,7 @@ const BoardList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/board/${id}`);
+      await axios.delete(`${Server_IP}/board/${id}`);
       alert('게시글이 성공적으로 삭제되었습니다.');
       // 삭제 후 게시글 목록을 다시 불러옵니다.
       setBoardList(boardList.filter(board => board.id !== id));
@@ -38,7 +41,7 @@ const BoardList = () => {
       <h1>게시판 목록</h1>
       {boardList.map((board, index) => (
         <div key={index} className="board-item">
-          <Link to={`/detail/${board.id}`}>
+          <Link to={`/board/${board.id}`}>
             <h2>{board.title}</h2>
           </Link>
           <p>{board.contents}</p>

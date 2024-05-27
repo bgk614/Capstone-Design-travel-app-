@@ -30,7 +30,7 @@ function Signup() {
     if (!birthDate) {
       inputErrors.birthDate = '생년월일을 입력하세요.';
     }
-    if (!phoneNumber || !/^\d{10,11}$/.test(phoneNumber)) {
+    if (!phoneNumber || !/^010-\d{4}-\d{4}$/.test(phoneNumber)) {
       inputErrors.phoneNumber = '유효한 전화번호를 입력하세요.';
     }
     return inputErrors;
@@ -46,7 +46,7 @@ function Signup() {
 
     try {
       const signupData = {
-        userId: userId,
+        userid: userId,
         password: password,
         nickname: nickname,
         name: name,
@@ -56,7 +56,7 @@ function Signup() {
 
       // axios로 서버에 POST 요청
       // `YOUR_SPRING_SERVER_ENDPOINT`스프링 서버 엔드포인트로 대체
-      const response = await axiox.post('YOUR_SPRING_SERVER_ENDPOINT', signupData);
+      const response = await axiox.post('http://localhost:8000/signup/', signupData);
 
       // 요청이 성공했을 때 로직
       console.log(response.data); // 서버로부터 받은 응답을 로그로 출력

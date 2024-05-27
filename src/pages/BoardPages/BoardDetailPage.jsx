@@ -1,6 +1,6 @@
 import React from "react";
 // import "../../../styles/PageStyle/BoardPage.css"
-import BoardDetail from "../../../components/Board/BoardDetail";
+import BoardDetail from "../../components/Board/BoardDetail";
 import { Link } from "react-router-dom";
 
 export default function BoardDetailPage() {

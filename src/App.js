@@ -21,9 +21,9 @@ import BestPostPage from './pages/BestPages/BestPostPage';
 import TourDetailPage from './pages/BestPages/TourDetailPage';
 
 import DestinationsPage from './pages/BasePages/DestinationsPage';
-import BoardPage from './pages/BasePages/BoardPages/BoardPage';
+import BoardPage from './pages/BoardPages/BoardPage';
 import PlanPage from './pages/BasePages/PlanPage';
-import FAQPage from './pages/BasePages/FAQPage';
+import FAQPage from './pages/FAQPages/FAQPage';
 import MakePlanPage from './pages/MakePlanPages/MakePlanPage';
 
 import LoginPage from './pages/AuthPages/LoginPage';
@@ -31,12 +31,10 @@ import SignupPage from './pages/AuthPages/SignupPage';
 import FindIDPage from './pages/AuthPages/FindIDPage';
 import FindPasswordPage from './pages/AuthPages/FindPasswordPage';
 
-import BoardWritePage from './pages/BasePages/BoardPages/BoardWritePage';
-import BoardDetailPage from './pages/BasePages/BoardPages/BoardDetailPage';
+import BoardWritePage from './pages/BoardPages/BoardWritePage';
+import BoardDetailPage from './pages/BoardPages/BoardDetailPage';
 
 import CreateFAQ from './pages/WritePages/CreateFAQ';
-import MasterAnswerPages from './pages/WritePages/MasterAnswerPages';
-// import TripPlacePage from './pages/WritePages/TripPlacePage';
 
 
 function App() {
@@ -92,8 +90,7 @@ function App() {
           <Route path="/plan" element={<PlanPage />} />
           <Route path="/faq" element={<FAQPage />} />
 
-          <Route path="/createfaq" element={<CreateFAQ />} /> 
-          <Route path="/masteranswerpages" element={<MasterAnswerPages />} /> 
+          <Route path="Createfaq" element={<CreateFAQ />} /> 
 
           <Route path="/makeplan" element={<MakePlanPage />} />
 
