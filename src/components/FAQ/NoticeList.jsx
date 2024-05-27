@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../../styles/FAQStyle/NoticeList.css"; // CSS 파일 임포트
+// import "../../styles/FAQStyle/NoticeList.css"; // CSS 파일 임포트
 
 const Server_IP = process.env.REACT_APP_Local_Server_IP;
 
@@ -49,16 +49,15 @@ const NoticeList = () => {
     }
 
     return (
-        <div className="notice-list">
-            <h1>공지사항 목록</h1>
+        <div className="faq-list">
             {noticeList.map((notice, index) => (
-                <div key={index} className="notice-item">
+                <div key={index} className="faq-item">
                     <Link to={`/notice/${notice.id}`}>
-                        <h2>{notice.title}</h2>
+                        <h1>{notice.title}</h1>
                     </Link>
                     <p>{notice.content}</p>
                     <p className="date">{formatDate(notice.created_at)}</p>
-                    <button className="notice-delete-button" onClick={() => handleDelete(notice.id)}>삭제</button>
+                    <button className="faq-delete-button" onClick={() => handleDelete(notice.id)}>삭제</button>
                 </div>
             ))}
         </div>

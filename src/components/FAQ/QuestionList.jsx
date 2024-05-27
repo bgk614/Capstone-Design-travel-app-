@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../../styles/FAQStyle/QuestionList.css"; // CSS 파일 임포트
+// import "../../styles/FAQStyle/QuestionList.css"; // CSS 파일 임포트
 
 const Server_IP = process.env.REACT_APP_Local_Server_IP;
 
@@ -49,17 +49,16 @@ const QuestionList = () => {
     }
 
     return (
-        <div className="question-list">
-            <h1>질문 목록</h1>
+        <div className="faq-list">
             {questionList.map((question, index) => ( 
-                <div key={index} className="question-item">
+                <div key={index} className="faq-item">
                     <Link to={`/question/${question.id}`}>
-                        <h2>{question.title}</h2>
+                        <h1>{question.title}</h1>
                     </Link>
                     <p>{question.question}</p>
                     <p>{question.asker}</p>
                     <p className="date">{formatDate(question.created_at)}</p>
-                    <button className="question-delete-button" onClick={() => handleDelete(question.id)}>삭제</button>
+                    <button className="faq-delete-button" onClick={() => handleDelete(question.id)}>삭제</button>
                 </div>
             ))}
         </div>

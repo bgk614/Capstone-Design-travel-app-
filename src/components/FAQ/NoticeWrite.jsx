@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../../styles/FAQStyle/NoticeWrite.css'; // CSS 파일 임포트
 
 const Server_IP = process.env.REACT_APP_Local_Server_IP;
 
@@ -29,6 +30,7 @@ const NoticeWrite = () => {
 
     return (
         <div className="post-form-container">
+            <h2>공지 작성</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="title">공지제목</label>
@@ -43,7 +45,6 @@ const NoticeWrite = () => {
                 <div className="form-group">
                     <label htmlFor="content">내용</label>
                     <textarea 
-                        type="text"
                         id="content" 
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
