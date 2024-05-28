@@ -1,0 +1,129 @@
+/* 공통 버튼 스타일 */
+button {
+    padding: 10px 15px;
+    background-color: #374151;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #1F2937;
+}
+
+/* 글 추가 버튼 스타일 */
+.faq-link-button {
+    background-color: #f0f0f0;
+    color: #000000;
+    padding: 7px;
+
+    /* height: 30px;
+    width: 50px; */
+    font-size: 12px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.faq-link-button:hover {
+    background-color: #d6d6d6;
+}
+
+/* 페이지 컨테이너 스타일 */
+.faq-page-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ 목록 스타일 */
+.faq-list h1 {
+    font-size: 1.5em;
+    color: #007bff;
+    text-decoration: none;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+/* FAQ 항목 스타일 */
+.faq-item {
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+}
+
+.faq-item h2 {
+    margin: 0 0 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.faq-item h2:hover {
+    text-decoration: underline;
+}
+
+.faq-item p {
+    margin: 5px 0;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.faq-item .date {
+    font-size: 0.9em;
+    color: #999;
+}
+
+/* 삭제 버튼 스타일 */
+.faq-delete-button {
+    /* padding: 7px; */
+    background-color: #374151;
+    color: #fff;
+    border: none;
+    font-size: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    transition: background-color 0.2s ease-in-out;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.faq-delete-button:hover {
+    background-color: #1F2937;
+}
+
+/* 로딩 및 에러 메시지 스타일 */
+.loading,
+.error {
+    text-align: center;
+    color: #888888;
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+.faq-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,12 @@
+
+.notice-item {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* 추가 */
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}

@@ -1,0 +1,38 @@
+
+  
+  .question-item h2:hover {
+    text-decoration: underline;
+  }
+  
+  /* 질문 내용 스타일 */
+  .question-item p {
+    color: #555555;
+    white-space: nowrap; /* 한 줄로 표시 */
+    overflow: hidden; /* 넘치는 텍스트를 숨김 */
+    text-overflow: ellipsis; /* 말줄임표(...) 추가 */
+    margin: 5px 0;
+  }
+  
+  /* 작성자 스타일 */
+  .question-item p:nth-of-type(2) {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* 날짜 스타일 */
+  .question-item .date {
+    color: #888888;
+    font-size: 0.9em;
+  }
+  
+.question-item {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* 추가 */
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
