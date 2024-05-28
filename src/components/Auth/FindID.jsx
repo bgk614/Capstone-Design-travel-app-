@@ -29,7 +29,7 @@ function FindID() {
         if (!name) {
             inputErrors.name = '이름을 입력하세요.';
         }
-        if (!phoneNumber || !/^\d{10,11}$/.test(phoneNumber)) {
+        if (!phoneNumber || !/^010-\d{4}-\d{4}$/.test(phoneNumber)) {
             inputErrors.phoneNumber = '유효한 전화번호를 입력하세요.';
         }
         if (!verificationCode && isCodeSent) {
@@ -38,8 +38,7 @@ function FindID() {
         return inputErrors;
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSendCode = async () => {
         const inputErrors = validate();
         if (Object.keys(inputErrors).length > 0) {
             setErrors(inputErrors);
@@ -47,41 +46,62 @@ function FindID() {
         }
 
         try {
-            if (!isCodeSent) {
-                // 인증번호 요청
-                const response = await axiox.post('http://localhost:8000/send-code/', { phoneNumber });
-                setSentCode(response.data.code);
-                setIsCodeSent(true);
+            const response = await axiox.post('http://localhost:8000/send-code/', { phoneNumber });
+            setSentCode(response.data.code);
+            setIsCodeSent(true);
+            setVerificationCode("");
+            setErrors({});
+            console.log('인증번호가 전송되었습니다:', response.data.code);
+        } catch (error) {
+            console.error('인증번호 요청 실패:', error);
+            setErrors({ apiError: '인증번호 요청에 실패했습니다. 다시 시도하세요.' });
+        }
+    };
+
+    const handleVerifyCode = async () => {
+        if (verificationCode !== sentCode) {
+            setErrors({ verificationCode: '인증번호가 일치하지 않습니다.' });
+            return;
+        }
+
+        try {
+            const response = await axiox.post('http://localhost:8000/verify-code/', { phoneNumber, name, verificationCode });
+            if (response.data.success) {
+                setIsVerified(true);
                 setErrors({});
-            } else if (!isVerified) {
-                // 인증번호 확인
-                if (verificationCode !== sentCode) {
-                    setErrors({ verificationCode: '인증번호가 일치하지 않습니다.' });
-                    return;
-                }
-                const response = await axiox.post('http://localhost:8000/verify-code/', { phoneNumber, name, verificationCode });
-                if (response.data.success) {
-                    setIsVerified(true);
-                    setErrors({});
-                } else {
-                    setErrors({ formError: response.data.message || '등록된 정보가 없습니다.' });
-                    setIsVerified(false);
-                }
+                console.log('인증이 성공적으로 완료되었습니다.');
             } else {
-                // 아이디 찾기
-                const response = await axiox.post('http://localhost:8000/find-id/', { name, phoneNumber });
-                setFoundId(response.data.userId);
-                setErrors({});
+                setErrors({ formError: response.data.message || '등록된 정보가 없습니다.' });
+                setIsVerified(false);
             }
         } catch (error) {
-            console.error('요청 실패:', error);
-            setErrors({ apiError: '요청에 실패했습니다. 다시 시도하세요.' });
+            console.error('인증 실패:', error);
+            setErrors({ apiError: '인증에 실패했습니다. 다시 시도하세요.' });
+        }
+    };
+
+    const handleFindId = async (event) => {
+        event.preventDefault();
+
+        if (!isVerified) {
+            setErrors({ verificationCode: '인증을 완료하세요.' });
+            return;
+        }
+
+        try {
+            const response = await axiox.post('http://localhost:8000/find-id/', { name, phoneNumber });
+            setFoundId(response.data.userId);
+            setErrors({});
+            console.log('아이디가 성공적으로 찾았습니다:', response.data.userId);
+        } catch (error) {
+            console.error('아이디 찾기 실패:', error);
+            setErrors({ apiError: '아이디 찾기에 실패했습니다. 다시 시도하세요.' });
         }
     };
 
     return (
         <div className="findid-container">
-            <form className="findid-form"onSubmit={handleSubmit}>
+            <form className="findid-form" onSubmit={handleFindId}>
                 <div className="form-group">
                     <input
                         type="text"
@@ -100,7 +120,7 @@ function FindID() {
                         placeholder="전화번호"
                         disabled={isVerified}
                     />
-                    <button className="button-send-code" type="button" onClick={handleSubmit} disabled={isCodeSent || isVerified}>
+                    <button className="button-send-code" type="button" onClick={handleSendCode}>
                         인증번호 요청
                     </button>
                     {errors.phoneNumber && <div className="error-message">{errors.phoneNumber}</div>}
@@ -112,7 +132,7 @@ function FindID() {
                         onChange={onVerificationCodeHandler}
                         placeholder="인증번호 6자리"
                     />
-                    <button className="button-verify-code"type="button" onClick={handleSubmit}>
+                    <button className="button-verify-code" type="button" onClick={handleVerifyCode}>
                         인증
                     </button>
                     {isVerified && <div className="verification-success">✔</div>}

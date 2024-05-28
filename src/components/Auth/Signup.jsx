@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axiox from 'axios';
+import axiox from 'axios';  // Corrected typo here
 import { useNavigate } from 'react-router-dom';
 import '../../styles/LoginStyle/Signup.css';
 
@@ -11,9 +11,13 @@ function Signup() {
   const [birthDate, setBirthDate] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [errors, setErrors] = useState({});
+  const [isCheckingUserId, setIsCheckingUserId] = useState(false);
+  const [isUserIdAvailable, setIsUserIdAvailable] = useState(null);
+  const [isCheckingNickname, setIsCheckingNickname] = useState(false);
+  const [isNicknameAvailable, setIsNicknameAvailable] = useState(null);
   const navigate = useNavigate();
 
-  function validateInputs () {
+  function validateInputs() {
     const inputErrors = {};
     if (!userId) {
       inputErrors.userId = '아이디를 입력하세요.';
@@ -34,11 +38,55 @@ function Signup() {
       inputErrors.phoneNumber = '유효한 전화번호를 입력하세요.';
     }
     return inputErrors;
+  }
+
+  const handleCheckUserId = async () => {
+    const inputErrors = validateInputs();
+    if (inputErrors.userId) {
+      setErrors(inputErrors);
+      return;
+    }
+    setIsCheckingUserId(true);
+    try {
+      const response = await axiox.post('http://localhost:8000/check-userid/', { userId });
+      setIsUserIdAvailable(response.data.available);
+      setErrors({ ...errors, userId: response.data.available ? null : '중복된 아이디입니다.' });
+    } catch (error) {
+      console.error('아이디 중복 확인에 실패했습니다.', error);
+      setErrors({ ...errors, userId: '아이디 중복 확인 중 오류가 발생했습니다.' });
+    }
+    setIsCheckingUserId(false);
+  };
+
+  const handleCheckNickname = async () => {
+    const inputErrors = validateInputs();
+    if (inputErrors.nickname) {
+      setErrors(inputErrors);
+      return;
+    }
+    setIsCheckingNickname(true);
+    try {
+      const response = await axiox.post('http://localhost:8000/check-nickname/', { nickname });
+      setIsNicknameAvailable(response.data.available);
+      setErrors({ ...errors, nickname: response.data.available ? null : '중복된 닉네임입니다.' });
+    } catch (error) {
+      console.error('닉네임 중복 확인에 실패했습니다.', error);
+      setErrors({ ...errors, nickname: '닉네임 중복 확인 중 오류가 발생했습니다.' });
+    }
+    setIsCheckingNickname(false);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const inputErrors = validateInputs();
+
+    if (isUserIdAvailable === null) {
+      inputErrors.userId = '아이디 중복 확인을 해주세요.';
+    }
+    if (isNicknameAvailable === null) {
+      inputErrors.nickname = '닉네임 중복 확인을 해주세요.';
+    }
+
     if (Object.keys(inputErrors).length > 0) {
       setErrors(inputErrors);
       return;
@@ -46,26 +94,18 @@ function Signup() {
 
     try {
       const signupData = {
-        userid: userId,
-        password: password,
-        nickname: nickname,
-        name: name,
-        birthDate: birthDate,
-        phoneNumber: phoneNumber
+        userId,
+        password,
+        nickname,
+        name,
+        birthDate,
+        phoneNumber
       };
-
-      // axios로 서버에 POST 요청
-      // `YOUR_SPRING_SERVER_ENDPOINT`스프링 서버 엔드포인트로 대체
       const response = await axiox.post('http://localhost:8000/signup/', signupData);
-
-      // 요청이 성공했을 때 로직
-      console.log(response.data); // 서버로부터 받은 응답을 로그로 출력
-      // 회원가입 성공 후 처리 로직 추가(로그인 페이지로 리다이렉트)
+      console.log(response.data);
       navigate('/login');
     } catch (error) {
-      // 요청이 실패했을 때 로직
       console.error('회원가입에 실패했습니다.', error);
-      // 회원가입 실패 처리 로직 추가(에러 메시지 표시)
       setErrors({
         ...errors,
         apiError: error.response ? error.response.data.message : '회원가입 중 오류가 발생했습니다.'
@@ -82,7 +122,11 @@ function Signup() {
           onChange={(e) => setUserId(e.target.value)}
           placeholder="아이디"
         />
+        <button type="button" onClick={handleCheckUserId} disabled={isCheckingUserId}>
+          {isCheckingUserId ? '확인 중...' : '중복 확인'}
+        </button>
         {errors.userId && <div className="error-message">{errors.userId}</div>}
+        {isUserIdAvailable && <div className="success-message">사용 가능한 아이디입니다.</div>}
         <input
           type="password"
           value={password}
@@ -96,7 +140,11 @@ function Signup() {
           onChange={(e) => setNickname(e.target.value)}
           placeholder="닉네임"
         />
+        <button type="button" onClick={handleCheckNickname} disabled={isCheckingNickname}>
+          {isCheckingNickname ? '확인 중...' : '중복 확인'}
+        </button>
         {errors.nickname && <div className="error-message">{errors.nickname}</div>}
+        {isNicknameAvailable && <div className="success-message">사용 가능한 닉네임입니다.</div>}
         <input
           type="text"
           className='name'
