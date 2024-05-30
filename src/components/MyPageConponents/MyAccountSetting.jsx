@@ -14,7 +14,7 @@ export default function MyAccountSetting() {
         name: '',
         phone: '',
         email: '',
-        address: '',
+        birthdate: '',
     });
     
     const [initialUser, setInitialUser] = useState(null); // 초기 사용자 상태 저장
@@ -70,8 +70,8 @@ export default function MyAccountSetting() {
         if (!user.name) {
             newErrors.name = '이름을 입력해주세요';
         }
-        if (!user.address) {
-            newErrors.address = '주소를 입력해주세요';
+        if (!user.birthdate) {
+            newErrors.birthdate = '생년월일을 입력해주세요';
         }
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -179,10 +179,10 @@ export default function MyAccountSetting() {
                             onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label>주소:</label>
-                    <input type="text" 
-                            name="address" 
-                            value={user.address || ''} 
+                    <label>생년월일:</label>
+                    <input type="date" 
+                            name="birthdate" 
+                            value={user.birthdate || ''} 
                             onChange={handleChange} />
                 </div>
                 <button type="submit">Update</button>
