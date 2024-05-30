@@ -81,12 +81,18 @@ export default function MyAccountSetting() {
     function hasChanges() {
         if (!initialUser) return true; // 초기 상태가 설정되지 않았으면 항상 변경된 것으로 간주
         const updatedUser = { ...user };
-        delete updatedUser.password; // 비밀번호 필드는 무시
+        
         for (let key in initialUser) {
             if (initialUser[key] !== updatedUser[key]) {
                 return true;
             }
         }
+
+        // 비밀번호가 설정되어 있는 경우 변경사항으로 간주
+        if (user.password) {
+            return true;
+        }
+
         return false;
     }
 

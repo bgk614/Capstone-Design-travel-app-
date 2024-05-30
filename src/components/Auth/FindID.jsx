@@ -4,7 +4,7 @@ import '../../styles/LoginStyle/FindID.css';
 
 function FindID() {
     const [name, setName] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const [phone, setPhone] = useState("");
     const [verificationCode, setVerificationCode] = useState("");
     const [sentCode, setSentCode] = useState("");
     const [foundId, setFoundId] = useState("");
@@ -16,8 +16,8 @@ function FindID() {
         setName(event.currentTarget.value);
     };
 
-    const onPhoneNumberHandler = (event) => {
-        setPhoneNumber(event.currentTarget.value);
+    const onPhoneHandler = (event) => {
+        setPhone(event.currentTarget.value);
     };
 
     const onVerificationCodeHandler = (event) => {
@@ -29,8 +29,8 @@ function FindID() {
         if (!name) {
             inputErrors.name = '이름을 입력하세요.';
         }
-        if (!phoneNumber || !/^010-\d{4}-\d{4}$/.test(phoneNumber)) {
-            inputErrors.phoneNumber = '유효한 전화번호를 입력하세요.';
+        if (!phone || !/^010-\d{4}-\d{4}$/.test(phone)) {
+            inputErrors.phone = '유효한 전화번호를 입력하세요.';
         }
         if (!verificationCode && isCodeSent) {
             inputErrors.verificationCode = '인증코드를 입력하세요.';
@@ -46,7 +46,7 @@ function FindID() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/send-code/', { phoneNumber });
+            const response = await axios.post('http://localhost:8000/send-code/', { phone });
             setSentCode(response.data.code);
             setIsCodeSent(true);
             setVerificationCode("");
@@ -65,7 +65,7 @@ function FindID() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/verify-code/', { phoneNumber, name, verificationCode });
+            const response = await axios.post('http://localhost:8000/verify-code/', { phone, name, verificationCode });
             if (response.data.success) {
                 setIsVerified(true);
                 setErrors({});
@@ -89,7 +89,7 @@ function FindID() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/find-id/', { name, phoneNumber });
+            const response = await axios.post('http://localhost:8000/find-id/', { name, phone });
             setFoundId(response.data.userId);
             setErrors({});
             console.log('아이디를 성공적으로 찾았습니다:', response.data.userId);
@@ -115,15 +115,15 @@ function FindID() {
                 <div className="form-group">
                     <input
                         type="tel"
-                        value={phoneNumber}
-                        onChange={onPhoneNumberHandler}
+                        value={phone}
+                        onChange={onPhoneHandler}
                         placeholder="전화번호"
                         disabled={isVerified}
                     />
                     <button className="button-send-code" type="button" onClick={handleSendCode}>
                         인증번호 요청
                     </button>
-                    {errors.phoneNumber && <div className="error-message">{errors.phoneNumber}</div>}
+                    {errors.phone && <div className="error-message">{errors.phone}</div>}
                 </div>
                 <div className="form-group">
                     <input

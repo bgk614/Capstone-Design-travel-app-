@@ -4,23 +4,23 @@ import axios from 'axios';
 import '../../styles/LoginStyle/Signup.css';
 
 function Signup() {
-  const [userId, setUserId] = useState('');
+  const [userid, setUserid] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [name, setName] = useState('');
   const [birthDate, setBirthDate] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const [errors, setErrors] = useState({});
-  const [isCheckingUserId, setIsCheckingUserId] = useState(false);
-  const [isUserIdAvailable, setIsUserIdAvailable] = useState(null);
+  const [isCheckingUserid, setIsCheckingUserid] = useState(false);
+  const [isUseridAvailable, setIsUseridAvailable] = useState(null);
   const [isCheckingNickname, setIsCheckingNickname] = useState(false);
   const [isNicknameAvailable, setIsNicknameAvailable] = useState(null);
   const navigate = useNavigate();
 
   function validateInputs() {
     const inputErrors = {};
-    if (!userId) {
-      inputErrors.userId = '아이디를 입력하세요.';
+    if (!userid) {
+      inputErrors.userid = '아이디를 입력하세요.';
     }
     if (!password || password.length < 8 || password.length > 20) {
       inputErrors.password = '비밀번호는 최소 8자 이상, 최대 20자 이하여야 합니다.';
@@ -34,28 +34,28 @@ function Signup() {
     if (!birthDate) {
       inputErrors.birthDate = '생년월일을 입력하세요.';
     }
-    if (!phoneNumber || !/^010-\d{4}-\d{4}$/.test(phoneNumber)) {
-      inputErrors.phoneNumber = '유효한 전화번호를 입력하세요.';
+    if (!phone || !/^010-\d{4}-\d{4}$/.test(phone)) {
+      inputErrors.phone = '유효한 전화번호를 입력하세요.';
     }
     return inputErrors;
   }
 
-  const handleCheckUserId = async () => {
+  const handleCheckUserid = async () => {
     const inputErrors = validateInputs();
-    if (inputErrors.userId) {
+    if (inputErrors.userid) {
       setErrors(inputErrors);
       return;
     }
-    setIsCheckingUserId(true);
+    setIsCheckingUserid(true);
     try {
-      const response = await axios.post('http://localhost:8000/check-userid/', { userId });
-      setIsUserIdAvailable(response.data.available);
-      setErrors({ ...errors, userId: response.data.available ? null : '중복된 아이디입니다.' });
+      const response = await axios.post('http://localhost:8000/user/check-userid/', { userid });
+      setIsUseridAvailable(response.data.available);
+      setErrors({ ...errors, userid: response.data.available ? null : '중복된 아이디입니다.' });
     } catch (error) {
       console.error('아이디 중복 확인에 실패했습니다.', error);
-      setErrors({ ...errors, userId: '아이디 중복 확인 중 오류가 발생했습니다.' });
+      setErrors({ ...errors, userid: '아이디 중복 확인 중 오류가 발생했습니다.' });
     }
-    setIsCheckingUserId(false);
+    setIsCheckingUserid(false);
   };
 
   const handleCheckNickname = async () => {
@@ -80,8 +80,8 @@ function Signup() {
     event.preventDefault();
     const inputErrors = validateInputs();
 
-    if (isUserIdAvailable === null) {
-      inputErrors.userId = '아이디 중복 확인을 해주세요.';
+    if (isUseridAvailable === null) {
+      inputErrors.userid = '아이디 중복 확인을 해주세요.';
     }
     if (isNicknameAvailable === null) {
       inputErrors.nickname = '닉네임 중복 확인을 해주세요.';
@@ -94,12 +94,12 @@ function Signup() {
 
     try {
       const signupData = {
-        userId,
+        userid,
         password,
         nickname,
         name,
         birthDate,
-        phoneNumber
+        phone
       };
       const response = await axios.post('http://localhost:8000/signup/', signupData);
       console.log(response.data);
@@ -118,15 +118,15 @@ function Signup() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={userid}
+          onChange={(e) => setUserid(e.target.value)}
           placeholder="아이디"
         />
-        <button type="button" onClick={handleCheckUserId} disabled={isCheckingUserId}>
-          {isCheckingUserId ? '확인 중...' : '중복 확인'}
+        <button type="button" onClick={handleCheckUserid} disabled={isCheckingUserid}>
+          {isCheckingUserid ? '확인 중...' : '중복 확인'}
         </button>
-        {errors.userId && <div className="error-message">{errors.userId}</div>}
-        {isUserIdAvailable && <div className="success-message">사용 가능한 아이디입니다.</div>}
+        {errors.userid && <div className="error-message">{errors.userid}</div>}
+        {isUseridAvailable && <div className="success-message">사용 가능한 아이디입니다.</div>}
         <input
           type="password"
           value={password}
@@ -162,11 +162,11 @@ function Signup() {
         {errors.birthDate && <div className="error-message">{errors.birthDate}</div>}
         <input
           type="tel"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
           placeholder="전화번호"
         />
-        {errors.phoneNumber && <div className="error-message">{errors.phoneNumber}</div>}
+        {errors.phone && <div className="error-message">{errors.phone}</div>}
 
         {errors.apiError && <div className="error-message">{errors.apiError}</div>} {/* 서버로부터의 응답이 실패했을 때 사용자에게 에러 메시지를 표시 */}
 

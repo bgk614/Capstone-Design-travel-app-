@@ -42,8 +42,8 @@ function Login() {
         setIsLoading(true);
         try {
             // 스프링 백엔드의 로그인 엔드포인트로 POST 요청 보내기
-            const response = await axios.post('http://localhost:8000/login/', {
-                username: Id, // 백엔드에서 사용하는 파라미터 이름에 맞추기
+            const response = await axios.post('http://localhost:8000/user/login/', {
+                userid: Id, // 백엔드에서 사용하는 파라미터 이름에 맞추기
                 password: Password
             });
     
@@ -69,29 +69,29 @@ function Login() {
     };
 
     return (
-        <div className="form-container">
-            <form className="login-form" onSubmit={onSubmitHandler}>
+        <div classid="form-container">
+            <form classid="login-form" onSubmit={onSubmitHandler}>
                 <input 
                     type='text' 
-                    className='form' 
+                    classid='form' 
                     value={Id} 
                     onChange={onIdHandler}
                     placeholder="아이디"
                     disabled={isLoading}
                 />
                 <input type='password' 
-                    className='form' 
+                    classid='form' 
                     value={Password} 
                     onChange={onPasswordHandler}
                     placeholder="비밀번호"
                     autoComplete="current-password"
                     disabled={isLoading}
                 />
-                <button className="button-login" type="submit" disabled={isLoading}>
+                <button classid="button-login" type="submit" disabled={isLoading}>
                     {isLoading ? "로딩 중..." : "로그인"}
                 </button>
             </form>
-            {errorMessage && (<p className="error-message" aria-live="assertive">{errorMessage}</p>)}
+            {errorMessage && (<p classid="error-message" aria-live="assertive">{errorMessage}</p>)}
         </div>
     );
 }

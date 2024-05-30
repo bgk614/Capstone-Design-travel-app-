@@ -5,7 +5,7 @@ import '../../styles/LoginStyle/FindPassword.css';
 function FindPassword() {
     const [Id, setId] = useState("");
     const [name, setName] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const [phone, setPhone] = useState("");
     const [verificationCode, setVerificationCode] = useState("");
     const [sentCode, setSentCode] = useState("");
     const [newPassword, setNewPassword] = useState('');
@@ -15,13 +15,13 @@ function FindPassword() {
 
     // 인증번호 요청
     const handleRequestVerificationCode = async () => {
-        if (!phoneNumber.trim()) {
-            setErrors({ phoneNumber: '전화번호를 입력하세요.' });
+        if (!phone.trim()) {
+            setErrors({ phone: '전화번호를 입력하세요.' });
             return;
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/send-code/', { phoneNumber });
+            const response = await axios.post('http://localhost:8000/send-code/', { phone });
             if (response.data.success) {
                 setSentCode(response.data.code);
                 setErrors({});
@@ -36,11 +36,11 @@ function FindPassword() {
 
     // 인증번호 확인
     const handleConfirmVerificationCode = async () => {
-        if (!Id.trim() || !name.trim() || !phoneNumber.trim() || !verificationCode.trim()) {
+        if (!Id.trim() || !name.trim() || !phone.trim() || !verificationCode.trim()) {
             setErrors({
                 Id: !Id.trim() ? '아이디를 입력하세요.' : '',
                 name: !name.trim() ? '이름을 입력하세요.' : '',
-                phoneNumber: !phoneNumber.trim() ? '전화번호를 입력하세요.' : '',
+                phone: !phone.trim() ? '전화번호를 입력하세요.' : '',
                 verificationCode: !verificationCode.trim() ? '인증번호를 입력하세요.' : ''
             });
             return;
@@ -52,7 +52,7 @@ function FindPassword() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/verify-user/', { Id, name, phoneNumber, verificationCode });
+            const response = await axios.post('http://localhost:8000/verify-user/', { Id, name, phone, verificationCode });
             if (response.data.success) {
                 setStep(2);
                 setErrors({});
@@ -108,10 +108,10 @@ function FindPassword() {
                     {errors.name && <div className="error-message">{errors.name}</div>}
                     <input
                         type="tel"
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                         placeholder="전화번호" />
-                    {errors.phoneNumber && <div className="error-message">{errors.phoneNumber}</div>}
+                    {errors.phone && <div className="error-message">{errors.phone}</div>}
                     <button onClick={handleRequestVerificationCode}>인증번호 요청</button>
                     <input
                         type="text"
