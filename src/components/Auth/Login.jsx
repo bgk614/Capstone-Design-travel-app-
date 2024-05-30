@@ -4,6 +4,8 @@ import { AuthContext } from '../../App';
 import axios from 'axios';
 import '../../styles/LoginStyle/Login.css'; 
 
+const Server_IP = process.env.REACT_APP_Local_Server_IP;
+
 function Login() {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
@@ -42,7 +44,7 @@ function Login() {
         setIsLoading(true);
         try {
             // 스프링 백엔드의 로그인 엔드포인트로 POST 요청 보내기
-            const response = await axios.post('http://localhost:8000/user/login/', {
+            const response = await axios.post(`${Server_IP}/user/login/`, {
                 userid: Id, // 백엔드에서 사용하는 파라미터 이름에 맞추기
                 password: Password
             });

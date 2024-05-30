@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../../styles/LoginStyle/FindID.css';
 
+const Server_IP = process.env.REACT_APP_Local_Server_IP;
+
 function FindID() {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -46,7 +48,7 @@ function FindID() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/send-code/', { phone });
+            const response = await axios.post(`${Server_IP}/send-code/`, { phone });
             setSentCode(response.data.code);
             setIsCodeSent(true);
             setVerificationCode("");
@@ -65,7 +67,7 @@ function FindID() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/verify-code/', { phone, name, verificationCode });
+            const response = await axios.post(`${Server_IP}/verify-code/`, { phone, name, verificationCode });
             if (response.data.success) {
                 setIsVerified(true);
                 setErrors({});
@@ -89,7 +91,7 @@ function FindID() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/find-id/', { name, phone });
+            const response = await axios.post(`${Server_IP}/find-id/`, { name, phone });
             setFoundId(response.data.userId);
             setErrors({});
             console.log('아이디를 성공적으로 찾았습니다:', response.data.userId);

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/LoginStyle/Signup.css';
 
+const Server_IP = process.env.REACT_APP_Local_Server_IP;
+
 function Signup() {
   const [userid, setUserid] = useState('');
   const [password, setPassword] = useState('');
@@ -48,7 +50,7 @@ function Signup() {
     }
     setIsCheckingUserid(true);
     try {
-      const response = await axios.post('http://localhost:8000/user/check-userid/', { userid });
+      const response = await axios.post(`${Server_IP}/user/check-userid/`, { userid });
       setIsUseridAvailable(response.data.available);
       setErrors({ ...errors, userid: response.data.available ? null : '중복된 아이디입니다.' });
     } catch (error) {
@@ -66,7 +68,7 @@ function Signup() {
     }
     setIsCheckingNickname(true);
     try {
-      const response = await axios.post('http://localhost:8000/check-nickname/', { nickname });
+      const response = await axios.post(`${Server_IP}/check-nickname/`, { nickname });
       setIsNicknameAvailable(response.data.available);
       setErrors({ ...errors, nickname: response.data.available ? null : '중복된 닉네임입니다.' });
     } catch (error) {
@@ -101,7 +103,7 @@ function Signup() {
         birthDate,
         phone
       };
-      const response = await axios.post('http://localhost:8000/signup/', signupData);
+      const response = await axios.post(`${Server_IP}/signup/`, signupData);
       console.log(response.data);
       navigate('/login');
     } catch (error) {
