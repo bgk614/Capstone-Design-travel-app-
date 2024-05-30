@@ -23,7 +23,7 @@ export default function MyAccountSetting() {
 
     // 컴포넌트 마운트 시 사용자 정보를 서버에서 가져오기
     useEffect(() => {
-        axios.get(`${Server_IP}/users`)  // 엔드포인트 수정
+        axios.get(`${Server_IP}/user`)  // 엔드포인트 수정
             .then(response => {
                 const userData = response.data;
                 setUser(prevState => ({
@@ -106,7 +106,7 @@ export default function MyAccountSetting() {
             delete updatedUser.password;
         }
 
-        axios.put(`${Server_IP}/users`, updatedUser)  // 엔드포인트 수정
+        axios.put(`${Server_IP}/user`, updatedUser)  // 엔드포인트 수정
             .then(response => {
                 alert('업데이트에 성공했습니다.');  // 업데이트 성공 알림
                 setInitialUser(updatedUser); // 성공적으로 업데이트 된 후 초기 상태를 업데이트된 사용자 상태로 설정
