@@ -1,10 +1,8 @@
 import React, { useState, useContext } from 'react';
-import axiox from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/LoginStyle/Login.css'; 
-// import { useDispatch } from 'react-redux';
-// import { loginUser } from '../../../_actions/user_action';
 import { AuthContext } from '../../App';
+import axiox from 'axios';
+import '../../styles/LoginStyle/Login.css'; 
 
 function Login() {
         const [Id, setId] = useState("");
