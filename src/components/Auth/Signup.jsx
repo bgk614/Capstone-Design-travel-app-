@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axiox from 'axios';
+import axios from 'axios';
 import '../../styles/LoginStyle/Signup.css';
 
 function Signup() {
@@ -48,7 +48,7 @@ function Signup() {
     }
     setIsCheckingUserId(true);
     try {
-      const response = await axiox.post('http://localhost:8000/check-userid/', { userId });
+      const response = await axios.post('http://localhost:8000/check-userid/', { userId });
       setIsUserIdAvailable(response.data.available);
       setErrors({ ...errors, userId: response.data.available ? null : '중복된 아이디입니다.' });
     } catch (error) {
@@ -66,7 +66,7 @@ function Signup() {
     }
     setIsCheckingNickname(true);
     try {
-      const response = await axiox.post('http://localhost:8000/check-nickname/', { nickname });
+      const response = await axios.post('http://localhost:8000/check-nickname/', { nickname });
       setIsNicknameAvailable(response.data.available);
       setErrors({ ...errors, nickname: response.data.available ? null : '중복된 닉네임입니다.' });
     } catch (error) {
@@ -101,7 +101,7 @@ function Signup() {
         birthDate,
         phoneNumber
       };
-      const response = await axiox.post('http://localhost:8000/signup/', signupData);
+      const response = await axios.post('http://localhost:8000/signup/', signupData);
       console.log(response.data);
       navigate('/login');
     } catch (error) {
@@ -168,7 +168,7 @@ function Signup() {
         />
         {errors.phoneNumber && <div className="error-message">{errors.phoneNumber}</div>}
 
-        {errors.apiError && <div className="error-message">{errors.apiError}</div>} {/* 서버로부터의 응답이 실패했을 때 사용자에게 에러 메시지를 표시*/}
+        {errors.apiError && <div className="error-message">{errors.apiError}</div>} {/* 서버로부터의 응답이 실패했을 때 사용자에게 에러 메시지를 표시 */}
 
         <button type="submit">회원가입</button>
       </form>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axiox from 'axios';
+import axios from 'axios';
 import '../../styles/LoginStyle/FindID.css';
 
 function FindID() {
@@ -46,7 +46,7 @@ function FindID() {
         }
 
         try {
-            const response = await axiox.post('http://localhost:8000/send-code/', { phoneNumber });
+            const response = await axios.post('http://localhost:8000/send-code/', { phoneNumber });
             setSentCode(response.data.code);
             setIsCodeSent(true);
             setVerificationCode("");
@@ -65,7 +65,7 @@ function FindID() {
         }
 
         try {
-            const response = await axiox.post('http://localhost:8000/verify-code/', { phoneNumber, name, verificationCode });
+            const response = await axios.post('http://localhost:8000/verify-code/', { phoneNumber, name, verificationCode });
             if (response.data.success) {
                 setIsVerified(true);
                 setErrors({});
@@ -89,10 +89,10 @@ function FindID() {
         }
 
         try {
-            const response = await axiox.post('http://localhost:8000/find-id/', { name, phoneNumber });
+            const response = await axios.post('http://localhost:8000/find-id/', { name, phoneNumber });
             setFoundId(response.data.userId);
             setErrors({});
-            console.log('아이디가 성공적으로 찾았습니다:', response.data.userId);
+            console.log('아이디를 성공적으로 찾았습니다:', response.data.userId);
         } catch (error) {
             console.error('아이디 찾기 실패:', error);
             setErrors({ apiError: '아이디 찾기에 실패했습니다. 다시 시도하세요.' });
@@ -131,19 +131,20 @@ function FindID() {
                         value={verificationCode}
                         onChange={onVerificationCodeHandler}
                         placeholder="인증번호 6자리"
+                        disabled={!isCodeSent || isVerified}
                     />
-                    <button className="button-verify-code" type="button" onClick={handleVerifyCode}>
+                    <button className="button-verify-code" type="button" onClick={handleVerifyCode} disabled={!isCodeSent || isVerified}>
                         인증
                     </button>
                     {isVerified && <div className="verification-success">✔</div>}
                     {errors.verificationCode && <div className="error-message">{errors.verificationCode}</div>}
                 </div>
-                <button className="button-find-id" type="submit">
+                <button className="button-find-id" type="submit" disabled={!isVerified}>
                     아이디 찾기
                 </button>
                 {errors.apiError && <div className="error-message">{errors.apiError}</div>}
             </form>
-            {isVerified && (
+            {foundId && (
                 <div className="found-id">
                     <p>아이디: {foundId}</p>
                 </div>

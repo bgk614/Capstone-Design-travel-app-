@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axiox from 'axios';
+import axios from 'axios';
 import '../../styles/LoginStyle/FindPassword.css';
 
 function FindPassword() {
@@ -21,7 +21,7 @@ function FindPassword() {
         }
 
         try {
-            const response = await axiox.post('http://localhost:8000/send-code/', { phoneNumber });
+            const response = await axios.post('http://localhost:8000/send-code/', { phoneNumber });
             if (response.data.success) {
                 setSentCode(response.data.code);
                 setErrors({});
@@ -36,7 +36,7 @@ function FindPassword() {
 
     // 인증번호 확인
     const handleConfirmVerificationCode = async () => {
-        if (!Id.trim() || !phoneNumber.trim() || !verificationCode.trim()) {
+        if (!Id.trim() || !name.trim() || !phoneNumber.trim() || !verificationCode.trim()) {
             setErrors({
                 Id: !Id.trim() ? '아이디를 입력하세요.' : '',
                 name: !name.trim() ? '이름을 입력하세요.' : '',
@@ -52,7 +52,7 @@ function FindPassword() {
         }
 
         try {
-            const response = await axiox.post('http://localhost:8000/verify-user/', { Id, name, phoneNumber, verificationCode });
+            const response = await axios.post('http://localhost:8000/verify-user/', { Id, name, phoneNumber, verificationCode });
             if (response.data.success) {
                 setStep(2);
                 setErrors({});
@@ -77,7 +77,7 @@ function FindPassword() {
         }
 
         try {
-            const response = await axiox.post('http://localhost:8000/reset-password/', { Id, newPassword });
+            const response = await axios.post('http://localhost:8000/reset-password/', { Id, newPassword });
             if (response.data.success) {
                 alert('비밀번호가 성공적으로 재설정되었습니다.');
             } else {
