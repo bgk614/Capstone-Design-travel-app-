@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom"
 import '../../../styles/HeaderStyle/TopNav.css'
 import { AuthContext } from '../../../App';
 
-
 export default function TopMenu() {
     const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleLogout = () => {
         setIsAuthenticated(false);
+        alert('로그아웃이 되었습니다.');
         navigate('/');
     };
 

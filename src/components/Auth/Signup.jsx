@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
+import axiox from 'axios';  // Corrected typo here
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import '../../styles/LoginStyle/Signup.css';
 
 const Server_IP = process.env.REACT_APP_Local_Server_IP;
 
 function Signup() {
-  const [userid, setUserid] = useState('');
-  const [password, setPassword] = useState('');
+  const [userid, setuserid] = useState('');
+  const [password, setpassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [name, setName] = useState('');
-  const [birthDate, setBirthDate] = useState('');
-  const [phone, setPhone] = useState('');
+  const [phone, setphone] = useState('');
+  const [email, setemail] = useState('');
+  const [address, setaddress] = useState('');
   const [errors, setErrors] = useState({});
-  const [isCheckingUserid, setIsCheckingUserid] = useState(false);
-  const [isUseridAvailable, setIsUseridAvailable] = useState(null);
+  const [isCheckinguserid, setIsCheckinguserid] = useState(false);
+  const [isuseridAvailable, setIsuseridAvailable] = useState(null);
   const [isCheckingNickname, setIsCheckingNickname] = useState(false);
   const [isNicknameAvailable, setIsNicknameAvailable] = useState(null);
   const navigate = useNavigate();
@@ -24,8 +25,9 @@ function Signup() {
     if (!userid) {
       inputErrors.userid = '아이디를 입력하세요.';
     }
-    if (!password || password.length < 8 || password.length > 20) {
-      inputErrors.password = '비밀번호는 최소 8자 이상, 최대 20자 이하여야 합니다.';
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+    if (!passwordRegex.test(password)) {
+      inputErrors.password = '비밀번호는 영어 대소문자, 숫자, 특수문자를 포함한 8~20자이어야 합니다.';
     }
     if (!nickname) {
       inputErrors.nickname = '닉네임을 입력하세요.';
@@ -33,31 +35,34 @@ function Signup() {
     if (!name) {
       inputErrors.name = '이름을 입력하세요.';
     }
-    if (!birthDate) {
-      inputErrors.birthDate = '생년월일을 입력하세요.';
-    }
     if (!phone || !/^010-\d{4}-\d{4}$/.test(phone)) {
       inputErrors.phone = '유효한 전화번호를 입력하세요.';
+    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      inputErrors.email = '유효한 이메일을 입력하세요.';
+    }
+    if (!address) {
+      inputErrors.address = '주소를 입력하세요.';
     }
     return inputErrors;
   }
 
-  const handleCheckUserid = async () => {
+  const handleCheckuserid = async () => {
     const inputErrors = validateInputs();
     if (inputErrors.userid) {
       setErrors(inputErrors);
       return;
     }
-    setIsCheckingUserid(true);
+    setIsCheckinguserid(true);
     try {
-      const response = await axios.post(`${Server_IP}/user/check-userid/`, { userid });
-      setIsUseridAvailable(response.data.available);
+      const response = await axiox.post(`${Server_IP}/auth/check-userid/`, { userid });
+      setIsuseridAvailable(response.data.available);
       setErrors({ ...errors, userid: response.data.available ? null : '중복된 아이디입니다.' });
     } catch (error) {
       console.error('아이디 중복 확인에 실패했습니다.', error);
       setErrors({ ...errors, userid: '아이디 중복 확인 중 오류가 발생했습니다.' });
     }
-    setIsCheckingUserid(false);
+    setIsCheckinguserid(false);
   };
 
   const handleCheckNickname = async () => {
@@ -68,7 +73,7 @@ function Signup() {
     }
     setIsCheckingNickname(true);
     try {
-      const response = await axios.post(`${Server_IP}/check-nickname/`, { nickname });
+      const response = await axiox.post(`${Server_IP}/auth/check-nickname/`, { nickname });
       setIsNicknameAvailable(response.data.available);
       setErrors({ ...errors, nickname: response.data.available ? null : '중복된 닉네임입니다.' });
     } catch (error) {
@@ -82,7 +87,7 @@ function Signup() {
     event.preventDefault();
     const inputErrors = validateInputs();
 
-    if (isUseridAvailable === null) {
+    if (isuseridAvailable === null) {
       inputErrors.userid = '아이디 중복 확인을 해주세요.';
     }
     if (isNicknameAvailable === null) {
@@ -100,10 +105,11 @@ function Signup() {
         password,
         nickname,
         name,
-        birthDate,
-        phone
+        phone,
+        email,
+        address
       };
-      const response = await axios.post(`${Server_IP}/signup/`, signupData);
+      const response = await axiox.post(`${Server_IP}/auth/signup/`, signupData);
       console.log(response.data);
       navigate('/login');
     } catch (error) {
@@ -121,18 +127,18 @@ function Signup() {
         <input
           type="text"
           value={userid}
-          onChange={(e) => setUserid(e.target.value)}
+          onChange={(e) => setuserid(e.target.value)}
           placeholder="아이디"
         />
-        <button type="button" onClick={handleCheckUserid} disabled={isCheckingUserid}>
-          {isCheckingUserid ? '확인 중...' : '중복 확인'}
+        <button type="button" onClick={handleCheckuserid} disabled={isCheckinguserid}>
+          {isCheckinguserid ? '확인 중...' : '중복 확인'}
         </button>
         {errors.userid && <div className="error-message">{errors.userid}</div>}
-        {isUseridAvailable && <div className="success-message">사용 가능한 아이디입니다.</div>}
+        {isuseridAvailable && <div className="success-message">사용 가능한 아이디입니다.</div>}
         <input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setpassword(e.target.value)}
           placeholder="비밀번호"
         />
         {errors.password && <div className="error-message">{errors.password}</div>}
@@ -155,22 +161,29 @@ function Signup() {
           placeholder="이름"
         />
         {errors.name && <div className="error-message">{errors.name}</div>}
-        <div className='birthday-text'>생년월일</div>
-        <input
-          type="date"
-          value={birthDate}
-          onChange={(e) => setBirthDate(e.target.value)}
-        />
-        {errors.birthDate && <div className="error-message">{errors.birthDate}</div>}
         <input
           type="tel"
           value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          onChange={(e) => setphone(e.target.value)}
           placeholder="전화번호"
         />
         {errors.phone && <div className="error-message">{errors.phone}</div>}
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setemail(e.target.value)}
+          placeholder="이메일"
+        />
+        {errors.email && <div className="error-message">{errors.email}</div>}
+        <input
+          type="text"
+          value={address}
+          onChange={(e) => setaddress(e.target.value)}
+          placeholder="주소"
+        />
+        {errors.address && <div className="error-message">{errors.address}</div>}
 
-        {errors.apiError && <div className="error-message">{errors.apiError}</div>} {/* 서버로부터의 응답이 실패했을 때 사용자에게 에러 메시지를 표시 */}
+        {errors.apiError && <div className="error-message">{errors.apiError}</div>} {/* 서버로부터의 응답이 실패했을 때 사용자에게 에러 메시지를 표시*/}
 
         <button type="submit">회원가입</button>
       </form>
