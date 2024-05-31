@@ -31,7 +31,7 @@ const BoardDetail = () => {
     <div className="board-detail">
       <h1>{board.title}</h1>
       <p>{board.contents}</p>
-      <p>{board.created_by}</p>
+      {/* <p>{board.created_by}</p> */}
       <p className="date">{formatDate(board.created_at)}</p>
     </div>
   );

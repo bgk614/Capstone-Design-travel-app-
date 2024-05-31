@@ -15,12 +15,12 @@ export default function TopMenu() {
 
     return (
             <div className="topmenu">
-                <Link className="menu-link" to='/mypage'>
+                {/* <Link className="menu-link" to='/mypage'>
                     MY PAGE
-                </Link>
-                <Link className="menu-link" to='/mylike'>
+                </Link> */}
+                {/* <Link className="menu-link" to='/mylike'>
                     MY LIKE
-                </Link>
+                </Link> */}
                 <Link className="menu-link" to='/myplan'>
                     MY PLAN
                 </Link>

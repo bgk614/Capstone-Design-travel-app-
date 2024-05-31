@@ -8,11 +8,11 @@ export default function MyPlanPage() {
     return (
         <div >
             <div className="my-plan-page">
-            <MyPageNav />
+            {/* <MyPageNav /> */}
             <MyPlan />
-            <div className="make-new-plan-button">
+            {/* <div className="make-new-plan-button">
                 <Link to="/makeplan">새로운 일정</Link>
-            </div>
+            </div> */}
         </div>
         </div>
     )

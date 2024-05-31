@@ -23,7 +23,7 @@ const Answer = () => {
           setAnswer(null);
         } else {
           console.error('Error fetching answer:', error);
-          setError('Error fetching answer.');
+          setError('답변이 존재하지 않습니다');
         }
       });
   };
@@ -53,7 +53,7 @@ const Answer = () => {
 
   return (
     <div className="answer-detail">
-      <h2>Answer</h2>
+      <h2>답변</h2>
       {error && <p className="error-message">{error}</p>}
       {answer && (
         <div className="answer-item">
@@ -64,7 +64,7 @@ const Answer = () => {
       )}
 
       <form onSubmit={handleAnswerSubmit} className="answer-form">
-        <h3>Submit your answer</h3>
+        <h3>답변하기</h3>
         <textarea
             type="text"
             id="answer"

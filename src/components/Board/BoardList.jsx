@@ -45,7 +45,7 @@ const BoardList = () => {
             <h2>{board.title}</h2>
           </Link>
           <p>{board.contents}</p>
-          <p>{board.created_by}</p>
+          {/* <p>{board.created_by}</p> */}
           <p className="date">{formatDate(board.created_at)}</p>
           <button className="board-delete-button" onClick={() => handleDelete(board.id)}>삭제</button> {/* 삭제 버튼 추가 */}
         </div>

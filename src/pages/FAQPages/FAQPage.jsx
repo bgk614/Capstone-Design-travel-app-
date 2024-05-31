@@ -11,7 +11,7 @@ const FAQPage = () => {
             <div className='faq-page-container'>
                 <div className='faq-page-header'>
                     <h2>공지사항</h2>
-                    <Link to="/notice/new" className='faq-link-button'>추가하기</Link>
+                    {/* <Link to="/notice/new" className='faq-link-button'>추가하기</Link> */}
                 </div>
                 <NoticeList />
             </div>

@@ -1,7 +1,8 @@
 .topmenu {
     display: flex;
     justify-content: space-between;
-    width: 400px;
+    /* width: 400px; */
+    width: 150px;
     margin-left: 100px;
 }
 

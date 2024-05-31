@@ -53,7 +53,7 @@ const BoardWrite = () => {
             required
           ></textarea>
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="createdBy">작성자</label>
           <input
             type="text"
@@ -62,7 +62,7 @@ const BoardWrite = () => {
             onChange={(e) => setCreatedBy(e.target.value)}
             required
           />
-        </div>
+        </div> */}
         <button type="submit">작성하기</button>
       </form>
     </div>

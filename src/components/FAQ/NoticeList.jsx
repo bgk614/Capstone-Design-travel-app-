@@ -57,7 +57,7 @@ const NoticeList = () => {
                     </Link>
                     <p>{notice.content}</p>
                     <p className="date">{formatDate(notice.created_at)}</p>
-                    <button className="faq-delete-button" onClick={() => handleDelete(notice.id)}>삭제</button>
+                    {/* <button className="faq-delete-button" onClick={() => handleDelete(notice.id)}>삭제</button> */}
                 </div>
             ))}
         </div>
