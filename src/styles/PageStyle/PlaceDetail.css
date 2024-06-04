@@ -1,0 +1,22 @@
+/* src/styles/PageStyle/PlaceDetail.css */
+
+.place-detail {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.place-detail img {
+    max-width: 100%;
+    height: auto;
+}
+
+.place-detail h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.place-detail p {
+    font-size: 1.2em;
+    margin: 5px 0;
+}

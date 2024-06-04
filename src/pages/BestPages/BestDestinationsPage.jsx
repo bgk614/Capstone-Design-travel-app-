@@ -7,28 +7,30 @@ import CityNavHorizontal from '../../components/CityNav/CityNavHorizontal';
 
 function BestDestinationsPage() {
     const [destinations, setDestinations] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/tours/')
+        axios.get('http://localhost:8000/places/all')
             .then(response => {
                 setDestinations(response.data);
+                setLoading(false);
             })
             .catch(error => {
                 console.error('There was an error fetching the data!', error);
+                setError(error);
+                setLoading(false);
             });
     }, []);
 
-    const handleClick = (id) => {
-        axios.post(`http://localhost:8000/tours/${id}/click`)
-            .then(response => {
-                setDestinations(prevDestinations => prevDestinations.map(destination => 
-                    destination.id === id ? { ...destination, clicks: destination.clicks + 1 } : destination
-                ));
-            })
-            .catch(error => {
-                console.error('There was an error updating the click count!', error);
-            });
-    };
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
     return (
         <div className='allpage'>
             <BestNav />
@@ -40,8 +42,8 @@ function BestDestinationsPage() {
                 <div>베스트 여행지 50개</div>
                 <div className='best-d-list'>
                     {destinations.map(destination => (
-                        <Link to={`/tours/${destination.id}`} key={destination.id} className='best-d-1' onClick={() => handleClick(destination.id)}>
-                            {destination.name}
+                        <Link to={`/tours/${destination.id}`} key={destination.id} className='best-d-1'>
+                            {destination.title}
                         </Link>
                     ))}
                 </div>

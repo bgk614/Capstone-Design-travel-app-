@@ -7,13 +7,15 @@
 
 .des-left-page {
     background-color: rgb(255, 255, 255);
-    width: 200px;
+    width: 20%;
     margin-right: 50px;
+    border-right: 1px solid #ddd;
 }
 
 .des-center-page {
     background-color: rgb(255, 255, 255);
     width: 80%;
+    padding: 20px;
 }
 
 .des-text {
@@ -25,22 +27,38 @@
     font-family: 'NanumBarunGothicBold';
     background-color: rgb(255, 255, 255);
     width: 150px;
-  }
+}
+
+.d-text {
+    font-size: 24px;
+    font-weight: bold;
+}
 
 .d-list {
     display: flex;
-    
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
+
 .d-0 {
     width: 400px;
     height: 400px;
     border: 1px solid rgb(203, 203, 203);
     margin: 20px 20px 0px 0px;
 }
+
 .d-1 {
     width: 190px;
     height: 190px;
     border: 1px solid rgb(203, 203, 203);
     margin: 20px 20px 0px 0px;
+}
 
+.d-3 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.d-list div {
+    margin: 5px;
 }

@@ -30,3 +30,22 @@
   
 }
 
+.city-nav-vertical ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.city-nav-vertical li {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.city-nav-vertical li:hover {
+  background-color: #f0f0f0;
+}
+
+.city-vertical {
+  font-size: 18px;
+  color: #333;
+}

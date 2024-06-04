@@ -19,6 +19,9 @@ import BestDestinationsPage from './pages/BestPages/BestDestinationsPage';
 import BestPlanPage from './pages/BestPages/BestPlanPage';
 import BestPostPage from './pages/BestPages/BestPostPage';
 import TourDetailPage from './pages/BestPages/TourDetailPage';
+import Places from './pages/BestPages/Places';
+import PlaceList from './pages/BestPages/PlaceList';
+import PlaceDetail from './pages/BestPages/PlaceDetail';
 
 import DestinationsPage from './pages/BasePages/DestinationsPage';
 import BoardPage from './pages/BoardPages/BoardPage';
@@ -34,20 +37,19 @@ import FindPasswordPage from './pages/AuthPages/FindPasswordPage';
 import BoardWritePage from './pages/BoardPages/BoardWritePage';
 import BoardDetailPage from './pages/BoardPages/BoardDetailPage';
 
-import CreateFAQ from './pages/WritePages/CreateFAQ';
 
 
 function App() {
   const [destinations, setDestinations] = useState([]);
-  const [message, setMessage] = useState([]);
+
 
   useEffect(() => {
-    axios.get('http://localhost:8000/tours/')
+    axios.get('http://localhost:8000/place/all')
       .then(response => {
         setDestinations(response.data);
       })
       .catch(error => {
-        console.error('There was an error fetching the data!', error);
+        console.error('There was an error!', error);
       });
   }, []);
 
@@ -55,17 +57,6 @@ function App() {
     <div className="App">
       <Header />
       <div className='center-page'>
-      <h1>Travel Destinations</h1>
-          <div className="destinations">
-            {destinations.map(tour => (
-              <div key={tour.id} className="destination">
-                <img src={tour.image} alt={tour.name} />
-                <h2>{tour.name}</h2>
-                <p>{tour.address}</p>
-                <p>{tour.description}</p>
-              </div>
-            ))}
-          </div>
         <Routes>
           <Route path="/" element={<MainPage />} />
           
@@ -87,10 +78,9 @@ function App() {
           <Route path="/tours/:id" element={<TourDetailPage />} />
           <Route path="/board" element={<BoardPage />} />
           <Route path="/destinations" element={<DestinationsPage destinations={destinations} />} />
+          <Route path="/place/:content_id" element={<PlaceDetail />} />
           <Route path="/plan" element={<PlanPage />} />
           <Route path="/faq" element={<FAQPage />} />
-
-          <Route path="Createfaq" element={<CreateFAQ />} /> 
 
           <Route path="/makeplan" element={<MakePlanPage />} />
 
@@ -98,7 +88,10 @@ function App() {
           <Route path="/bestdestinations" element={<BestDestinationsPage />} />
           <Route path="/bestplan" element={<BestPlanPage />} />
           <Route path="/bestpost" element={<BestPostPage />} />
-          <Route path="/tours/:id" element={<TourDetail />} />
+          <Route path="/tours/:id" element={<TourDetailPage />} />
+          <Route path="/places" element={<Places />} />
+          <Route path="/place/all" exact component={<PlaceList />} />
+          
 
           {/* 게시판 페이지 */}
           <Route path="/write" element={<BoardWritePage />} />
