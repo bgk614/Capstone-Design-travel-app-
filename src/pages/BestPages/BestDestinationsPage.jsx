@@ -1,23 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import BestNav from '../../components/Best/BestNav';
-import "../../styles/BestStyle/Best.css";
 import CityNavHorizontal from '../../components/CityNav/CityNavHorizontal';
+import "../../styles/BestStyle/Best.css";
 
 function BestDestinationsPage() {
-    const [destinations, setDestinations] = useState([]);
+    const [places, setPlaces] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedCity, setSelectedCity] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/places/all')
+        fetch('http://localhost:8000/place/all')
             .then(response => {
-                setDestinations(response.data);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch best places');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setPlaces(data);
                 setLoading(false);
             })
             .catch(error => {
-                console.error('There was an error fetching the data!', error);
+                console.error('Error fetching best places:', error);
                 setError(error);
                 setLoading(false);
             });
@@ -31,6 +37,8 @@ function BestDestinationsPage() {
         return <div>Error: {error.message}</div>;
     }
 
+    const filteredPlaces = selectedCity ? places.filter(place => place.sigunguCode === selectedCity) : places;
+
     return (
         <div className='allpage'>
             <BestNav />
@@ -38,13 +46,14 @@ function BestDestinationsPage() {
                 <div className="best-head-text">
                     여행지
                 </div>
-                <CityNavHorizontal />
+                <CityNavHorizontal onSelectCity={setSelectedCity} />
                 <div>베스트 여행지 50개</div>
                 <div className='best-d-list'>
-                    {destinations.map(destination => (
-                        <Link to={`/tours/${destination.id}`} key={destination.id} className='best-d-1'>
-                            {destination.title}
-                        </Link>
+                    {filteredPlaces.map(place => (
+                        <div key={place.id} className='best-d-1'>
+                            {place.firstimage && <img src={place.firstimage} alt={place.title} />}
+                            <Link to={`/place/${place.contentId}`}>{place.title}</Link>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -53,3 +62,4 @@ function BestDestinationsPage() {
 }
 
 export default BestDestinationsPage;
+

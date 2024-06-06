@@ -6,6 +6,10 @@
     font-family: 'NanumBarunGothicBold';
     background-color: rgb(255, 255, 255);
 }
+.best-d-1 img {
+    width: 220px; /* 또는 원하는 크기 */
+    height: 155px; /* 비율을 유지하면서 높이 조정 */
+}
 
 .allpage {
     display: flex;
@@ -23,7 +27,7 @@
 }
 .best-d-1 {
     width: 220px;
-    height: 220px;
+    height: 180px;
     border: 1px solid rgb(203, 203, 203);
     margin: 20px 20px 0px 0px;
 
