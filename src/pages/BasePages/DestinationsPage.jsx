@@ -50,13 +50,12 @@ export default function DestinationsPage() {
                 <div className="d-text"> 여행지 </div>
                 <DestinationCategoryBar />
                 <div className='d-list'>
-                    <div className="d-3">
-                        {filteredPlaces.map(place => (
-                            <div key={place.id} className="d-list">
-                                <Link to={`/place/${place.contentId}`}>{place.title}</Link>
-                            </div>
-                        ))}
-                    </div>
+                    {filteredPlaces.map(place => (
+                        <div key={place.id} className="d-list-1">
+                            {place.firstimage && <img src={place.firstimage} alt={place.title} />}
+                            <Link to={`/place/${place.contentId}`}>{place.title}</Link>
+                        </div>
+                    ))}
                 </div>
                 <br></br>
             </div>

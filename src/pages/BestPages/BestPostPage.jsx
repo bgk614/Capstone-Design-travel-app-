@@ -1,72 +1,15 @@
-// import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import axios from "axios";
-// import BestNav from '../../components/Best/BestNav';
-// import "../../styles/BestStyle/Best.css"
-// import CityNavHorizontal from '../../components/CityNav/CityNavHorizontal';
-
-// const Server_IP = process.env.REACT_APP_Local_Server_IP;
-
-// const BoardList = () => {
-//   const [boardList, setBoardList] = useState([]);
-
-//   useEffect(() => {
-//     console.log(`Fetching board list from ${Server_IP}/board`);
-//     axios.get(`${Server_IP}/board`)
-//       .then(response => {
-//         setBoardList(response.data.boards);  // 'boards' 키로 접근
-//       })
-//       .catch(error => {
-//         console.error('Error fetching boards:', error);
-//       });
-//   }, []);
-
-//   const formatDate = (dateString) => {
-//     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-//     return new Date(dateString).toLocaleDateString(undefined, options);
-//   };
-//   return (
-//     <div className='allpage'>
-//         <BestNav />
-//         <div className='best-page'>
-//             <div className="best-head-text">
-//                 게시글
-//             </div>
-//             <CityNavHorizontal />
-//             <div className='board-list'>
-//             {boardList.map((board, index) => (
-//             <div key={index} className="board-item">
-//             <Link to={`/board/${board.id}`}>
-//                 <h2>{board.title}</h2>
-//             </Link>
-//             {/* <p>{board.contents}</p>
-//             <p>{board.created_by}</p>
-//             <p className="date">{formatDate(board.created_at)}</p> */}
-//             </div>
-//                 ))}
-//             </div>
-//         </div>
-//     </div>
-//   );
-// };
-
-// export default BoardList;
-
-
-
 import React, { useEffect, useState } from 'react';
-//import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import BestNav from '../../components/Best/BestNav';
-import "../../styles/BestStyle/Best.css"
-import CityNavHorizontal from '../../components/CityNav/CityNavHorizontal';
+import "../../styles/BestStyle/Best.css";
 
 function BestDestinationsPage() {
-    const [boards, setBoards] = useState([]);
+    const [board, setBoard] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        // FastAPI 엔드포인트에서 인기 게시글 데이터를 가져옵니다.
         fetch('http://localhost:8000/board')
             .then(response => {
                 if (!response.ok) {
@@ -75,7 +18,9 @@ function BestDestinationsPage() {
                 return response.json();
             })
             .then(data => {
-                setBoards(data.boards);
+                // 데이터를 클릭 수에 따라 내림차순으로 정렬
+                const sortedBoards = data.boards.sort((a, b) => b.click_count - a.click_count);
+                setBoard(sortedBoards);
                 setLoading(false);
             })
             .catch(error => {
@@ -84,6 +29,37 @@ function BestDestinationsPage() {
                 setLoading(false);
             });
     }, []);
+
+    // const handleTitleClick = async (boardId) => {
+    //     try {
+    //         await axios.post(`http://localhost:8000/board/${boardId}/click`);
+    //         // 클릭 성공 후 상태 업데이트
+    //         setBoard(board.map(board => {
+    //             if (board.id === boardId) {
+    //                 return {...board, click_count: board.click_count + 1};
+    //             }
+    //             return board;
+    //         }));
+    //     } catch (error) {
+    //         console.error('Error incrementing click count:', error);
+    //     }
+    // };
+    const handleTitleClick = async (boardId) => {
+        try {
+            const response = await axios.post(`http://localhost:8000/board/${boardId}/click`);
+            if (response.status === 200) {
+                setBoard(prevBoards => prevBoards.map(item => {
+                    if (item.id === boardId) {
+                        return {...item, click_count: item.click_count + 1};
+                    }
+                    return item;
+                }));
+            }
+        } catch (error) {
+            console.error('Error incrementing click count:', error);
+        }
+    };
+    
 
     if (loading) {
         return <div>Loading...</div>;
@@ -97,14 +73,13 @@ function BestDestinationsPage() {
         <div className='allpage'>
             <BestNav />
             <div className='best-page'>
-                <div className="best-head-text">
-                    게시글
-                </div>
-                <CityNavHorizontal />
+                <div className="best-head-text">게시글</div>
                 <div className='board-list'>
-                    {boards.map((board) => (
+                    {board.map((board) => (
                         <div key={board.id} className='board-item'>
-                            <h3>{board.title}</h3>
+                            <Link to={`/detail/${board.id}`}>
+                            <h2 onClick={() => handleTitleClick(board.id)}>{board.title}</h2>
+                            </Link>
                             <p>{board.click_count} clicks</p>
                         </div>
                     ))}

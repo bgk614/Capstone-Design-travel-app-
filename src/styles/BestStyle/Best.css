@@ -3,6 +3,7 @@
     justify-content: left;
     font-size: 30px;
     margin-bottom: 20px;
+    width: 900px;
     font-family: 'NanumBarunGothicBold';
     background-color: rgb(255, 255, 255);
 }
@@ -22,12 +23,15 @@
 }
 
 .best-d-list {
-    display: flex;
-    
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4개의 열을 만들고 각 열의 크기를 동일하게 설정 */
+    grid-gap: 20px; /* 그리드 항목 사이의 간격을 20px로 설정 */
+    padding: 20px; /* 옵션: 그리드 주변에 20px의 패딩 추가 */
 }
 .best-d-1 {
     width: 220px;
-    height: 180px;
+    height: auto;
     border: 1px solid rgb(203, 203, 203);
     margin: 20px 20px 0px 0px;
 

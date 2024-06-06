@@ -19,6 +19,7 @@ function BestDestinationsPage() {
                 return response.json();
             })
             .then(data => {
+                const limitedPlaces = data.slice(0, 50);
                 setPlaces(data);
                 setLoading(false);
             })
