@@ -12,7 +12,7 @@ const fetchBestDestinations = (city) => {
   return destinations[city] || [];
 };
 
-const CityNavVertical = () => {
+const CityNavVertical = ({ selectedRegion, onCitySelect }) => {
   const [selectedCity, setSelectedCity] = useState('');
   const [bestDestinations, setBestDestinations] = useState([]);
 
@@ -22,6 +22,12 @@ const CityNavVertical = () => {
       setBestDestinations(destinations);
     }
   }, [selectedCity]);
+
+  useEffect(() => {
+    if (selectedRegion) {
+      setSelectedCity(selectedRegion);
+    }
+  }, [selectedRegion]);
 
   const cities = [
     '충청남도', '천안시', '공주시', '보령시', 
@@ -35,8 +41,14 @@ const CityNavVertical = () => {
     <div className='city-nav-vertical'>
       <ul>
         {cities.map((city, index) => (
-          <li key={index} onClick={() => setSelectedCity(city)}>
-            <div className='city-vertical'>
+          <li 
+            key={index} 
+            onClick={() => {
+              setSelectedCity(city);
+              onCitySelect(city);
+            }}
+          >
+            <div className={`city-vertical ${selectedCity === city ? 'selected' : ''}`}>
               {city}
             </div>
           </li>

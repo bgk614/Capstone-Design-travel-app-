@@ -12,9 +12,9 @@ export default function NavBar() {
                     <Link className="nav-link" to='/destinations'>
                         여행지
                     </Link>
-                    {/* <Link className="nav-link" to='/plan'>
+                    <Link className="nav-link" to='/plan'>
                         일정
-                    </Link> */}
+                    </Link>
                     <Link className="nav-link" to='/board'>
                         게시판
                     </Link>

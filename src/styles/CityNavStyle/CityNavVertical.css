@@ -30,3 +30,7 @@
   
 }
 
+.city-vertical.selected {
+  color: green;
+  font-weight: bold;
+}

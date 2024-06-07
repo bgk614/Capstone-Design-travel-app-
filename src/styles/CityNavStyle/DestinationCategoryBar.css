@@ -27,3 +27,18 @@
 ol, ul, li {
     list-style: none;
 }
+
+.category.selected {
+    color: green;
+    font-weight: bold;
+  }
+
+  .destination-category-bar .category {
+    color: black; /* 기본 글씨 색상 */
+    cursor: pointer;
+  }
+  
+  .destination-category-bar .category.selected {
+    color: green; /* 선택된 카테고리 글씨 색상 */
+    font-weight: bold;
+  }

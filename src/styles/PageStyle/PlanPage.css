@@ -1,0 +1,203 @@
+/* PlanPage.css */
+.plan-page-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.plan-page-left {
+    width: 20%;
+    padding: 20px;
+}
+
+.plan-page-text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.plan-page-center {
+    width: 60%;
+    padding: 20px;
+}
+
+.plan-page-header-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.plan-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.plan-top-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.plan-item, .plan-top-item {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    background: #fff;
+}
+
+.plan-top-item a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+
+.plan-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.plan-item a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+}
+
+.heart-section {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.heart-section .heart {
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    padding: 0;
+}
+
+.pagination li {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.pagination li.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.upload-plan-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.upload-plan-button button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.upload-plan-button button:hover {
+    background-color: #0056b3;
+}
+
+.plan-detail {
+    margin-top: 40px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.plan-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.plan-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 5px;
+}
+
+.like-section {
+    margin-top: 20px;
+}
+
+.like-button {
+    padding: 10px 20px;
+    background-color: #ff4757;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.like-button:hover {
+    background-color: #e84118;
+}
+
+.schedule-table {
+    margin-top: 30px;
+}
+
+.schedule-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th, .schedule-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.schedule-table th {
+    background-color: #f1f1f1;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.plan-divider {
+    width: 100%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
