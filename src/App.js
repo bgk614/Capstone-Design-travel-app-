@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect, createContext } from 'react';
+import axios from 'axios';
 import "./App.css";
 
 import MainPage from './pages/BasePages/MainPage';
@@ -21,6 +22,7 @@ import BestPostPage from './pages/BestPages/BestPostPage';
 import DestinationsPage from './pages/BasePages/DestinationsPage';
 import BoardPage from './pages/BoardPages/BoardPage';
 import PlanPage from './pages/BasePages/PlanPage';
+import PlanDetailPage from "./pages/BasePages/PlanDetailPage";
 import FAQPage from './pages/FAQPages/FAQPage';
 import MakePlanPage from './pages/MakePlanPages/MakePlanPage';
 
@@ -57,13 +59,20 @@ function App() {
        });
     },[]);
 
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      if (token) {
+          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      }
+    }, []);
+
   return (
       <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
 
       <div className="App">
         <Header />
         <div className='center-page'>
-          <div>{message}</div>
+          <div>{message.message && message.message !== "" && <p>{message.message}</p>}</div>
           <Routes>
             <Route path="/" element={<MainPage />} />
               {/* 우측상단 네비바 */}
@@ -84,6 +93,7 @@ function App() {
               <Route path="/board" element={<BoardPage />} />
               <Route path="/destinations" element={<DestinationsPage />} />
               <Route path="/plan" element={<PlanPage />} />
+              <Route path="/plans/:id" element={<PlanDetailPage />} />
               <Route path="/faq" element={<FAQPage />} />
 
               {/* 문의 페이지 */}

@@ -12,35 +12,36 @@ const fetchDestinations = (category) => {
   return destinations[category] || [];
 };
 
-const DestinationCategoryBar = () => {
-  const [selectedCategory, setSelectedCategory] = useState('');
+const DestinationCategoryBar = ({ selectedCategory, onCategorySelect }) => {
+  const [selectedDestinationCategory, setSelectedDestinationCategory] = useState(selectedCategory);
   const [bestDestinations, setBestDestinations] = useState([]);
-
-  useEffect(() => {
-    if (selectedCategory) {
-      const destinations = fetchDestinations(selectedCategory);
-      setBestDestinations(destinations);
-    }
-  }, [selectedCategory]);
 
   const destinationCategories = [
     '자연', '도시', '힐링', '문화', '이색',
     '핫플', '체험', '쇼핑', '맛집투어'
   ];
 
+  useEffect(() => {
+    setSelectedDestinationCategory(selectedCategory);
+    setBestDestinations(fetchDestinations(selectedCategory));
+  }, [selectedCategory]);
+
   return (
     <div className='destination-category-bar'>
       <ul>
         {destinationCategories.map((category, index) => (
-          <li key={index} onClick={() => setSelectedCategory(category)}>
-            <div className='category'>
+          <li 
+            key={index} 
+            onClick={() => onCategorySelect(category)}
+          >
+            <div className={`category ${selectedCategory === category ? 'selected' : ''}`}>
                 {category}
             </div>
             
           </li>
         ))}
       </ul>
-      {selectedCategory && bestDestinations.length > 0 && (
+      {selectedDestinationCategory && bestDestinations.length > 0 && (
         <ul>
           {bestDestinations.map((destination, index) => (
             <li key={index}>{destination}</li>

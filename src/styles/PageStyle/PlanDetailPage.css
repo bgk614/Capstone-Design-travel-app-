@@ -1,0 +1,38 @@
+.plan-detail-container {
+    padding: 20px;
+}
+
+.plan-images {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.plan-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 5px;
+}
+
+.itinerary {
+    margin-top: 20px;
+}
+
+.day-itinerary {
+    margin-bottom: 20px;
+}
+
+.itinerary-item {
+    background-color: #b2dfdb;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.itinerary-item .time {
+    font-weight: bold;
+}
+
+.itinerary-item .activity {
+    margin-left: 10px;
+}
